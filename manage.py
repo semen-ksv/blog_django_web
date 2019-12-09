@@ -22,3 +22,10 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# virtualenv venv
+# sourse venv/bin/activate
+# django-admin startprogect
+# manage.py startapp django_blog
+# py manage.py runserver
+# py manage.py migrate
