@@ -16,14 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
-from my_blog.views import blog
 from . import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index),
-    path('blog/', blog),
+    path('', views.main_index),
+    path('blog/', include('my_blog.urls')),
 ]
 
 # Start Debug tulbar/ use only Debug = True

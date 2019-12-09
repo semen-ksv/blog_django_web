@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
 # Create your views here.
-def blog(request):
+def blog_posts_list(request):
     if request.method == 'GET':
-        return render(request, 'my_blog/index.html')
+        return render(request, 'my_blog/blog_post_list.html')
