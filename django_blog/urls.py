@@ -23,9 +23,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.main_index),
     path('blog/', include('my_blog.urls')),
+    path('about/', views.about),
 ]
 
-# Start Debug tulbar/ use only Debug = True
+# Start Debug toolbar/ use only Debug = True
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns += [path('__debug__/', include(debug_toolbar.urls))]
