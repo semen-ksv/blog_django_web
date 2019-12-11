@@ -24,6 +24,42 @@ posts = [
         'title': 'Blog Post 2',
         'content': 'Second post content Second post content Second post content Second post content Second post content Second post content Second post content Second post content ',
         'date_posted': 'August 28, 2018'
+    },
+    {
+        'author': 'Jane Doe',
+        'title': 'Blog Post 2',
+        'content': 'Second post content Second post content Second post content Second post content Second post content Second post content Second post content Second post content ',
+        'date_posted': 'August 28, 2018'
+    },
+    {
+        'author': 'CoreyMS',
+        'title': 'Blog Post 1',
+        'content': 'First post contentFirst post contentFirst post contentFirst post contentFirst post contentFirst post contentFirst post content',
+        'date_posted': 'August 27, 2018'
+    },
+    {
+        'author': 'Jane Doe',
+        'title': 'Blog Post 2',
+        'content': 'Second post content Second post content Second post content Second post content Second post content Second post content Second post content Second post content ',
+        'date_posted': 'August 28, 2018'
+    },
+    {
+        'author': 'Jane Doe',
+        'title': 'Blog Post 2',
+        'content': 'Second post content Second post content Second post content Second post content Second post content Second post content Second post content Second post content ',
+        'date_posted': 'August 28, 2018'
+    },
+    {
+        'author': 'CoreyMS',
+        'title': 'Blog Post 1',
+        'content': 'First post contentFirst post contentFirst post contentFirst post contentFirst post contentFirst post contentFirst post content',
+        'date_posted': 'August 27, 2018'
+    },
+    {
+        'author': 'Jane Doe',
+        'title': 'Blog Post 2',
+        'content': 'Second post content Second post content Second post content Second post content Second post content Second post content Second post content Second post content ',
+        'date_posted': 'August 28, 2018'
     }
 ]
 
