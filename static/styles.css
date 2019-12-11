@@ -5,7 +5,7 @@ body {
             "header header header"
             "aside article ads"
             "footer footer footer";
-    grid-template-rows: 10% 1fr 10%;
+    grid-template-rows: 10% 1fr 7%;
     grid-template-columns: 20% 1fr 20%;
     grid-row-gap: 10px;
     grid-column-gap: 10px;
@@ -73,7 +73,7 @@ header a:hover {
 
 /*  Navigation bar */
 .Navbar {
-    background-color: rgba(0,98,115,0.12);
+
     display: flex;
     padding-left: 10px;
     font-family: sans-serif;
@@ -143,17 +143,50 @@ header a:hover {
     }
 }
 
-
+/* Main part page */
 .mainArticle {
-    padding: 10px;
     border: 1px solid #000;
     grid-area: article;
+    box-sizing: border-box;
+    justify-content: center;
 }
 
-article a:hover {
+main a{
      color: #451a24;
      text-decoration: none;
 }
+
+main a:hover {
+     color: #893835;
+     text-decoration: none;
+}
+
+.media-body{
+    justify-content: space-between;
+    padding: 1%;
+    width: 100%;
+}
+
+.media-article{
+    background: rgba(158, 20, 167, 0.11);
+    padding: 2%;
+    border-radius: 0 50px 0 50px;
+}
+small.text-muted {
+    color: #380600 !important;
+    float: right;
+}
+.container {
+    padding-right: 0;
+    padding-left: 0;
+}
+.article-title{
+    font-size: 26px;
+}
+.content-section{
+    margin: 0;
+}
+
 .mainBorder {
     padding: 10px;
     border: 1px solid #000;
@@ -168,7 +201,7 @@ article a:hover {
 
 /*  FOOTER */
 .pageFooter {
-    padding: 10px;
+    padding: 0;
     grid-area: footer;
 }
 

@@ -66,20 +66,22 @@
 </header>
 
 
-<article class="mainArticle">
-    <div>
-        {% block conten_title %}
-            There is no any title.
-        {% endblock %}
-    </div>
-    </br>
-    <div>
-        {% block content %}
-            There is no any content.
-        {% endblock %}
+<main class="mainArticle container">
+
+    <div class="main_content">
+      {% block content %}
+            Some content
+      {% endblock %}
     </div>
 
-</article>
+    </br>
+{#    <div>#}
+{#        {% block content %}#}
+{#            There is no any content.#}
+{#        {% endblock %}#}
+{#    </div>#}
+
+</main>
 
 <aside class="mainBorder">
     {% block left %}
