@@ -17,25 +17,6 @@ body {
     background: linear-gradient(0deg, rgba(252,255,223,0.8057598039215687) 0%, rgba(0,111,130,0.819765406162465) 100%);
 }
 
-/* Stack the layout on small devices/viewports. */
-@media (max-width: 640px) {
-    body {
-        grid-template-areas:
-                "header"
-                "article"
-                "footer";
-        grid-template-columns: 1fr;
-    }
-
-    .siteAds {
-        display: none;
-    }
-
-    .mainBorder {
-        display: none;
-    }
-}
-
 @media (min-width: 641px) and (max-width: 1199px) {
     body {
         grid-template-areas:
@@ -54,10 +35,27 @@ body {
     }
 }
 
-a:hover {
-     color: #ffdd47;
-     text-decoration: none;
+/* Stack the layout on small devices/viewports. */
+@media (max-width: 640px) {
+    body {
+    grid-template-areas:
+"header"
+"article"
+"footer";
+    grid-template-columns: 1fr;
 }
+
+    .siteAds {
+    display: none;
+}
+
+    .mainBorder {
+    display: none;
+}
+}
+
+
+
 
 
 /*  Header */
@@ -68,13 +66,16 @@ a:hover {
 
 }
 
-
+header a:hover {
+     color: #ffdd47;
+     text-decoration: none;
+}
 
 /*  Navigation bar */
 .Navbar {
-    background-color: rgba(0,98,115,0);
+    background-color: rgba(0,98,115,0.12);
     display: flex;
-
+    padding-left: 10px;
     font-family: sans-serif;
     font-size: 18px;
     color: white;
@@ -114,9 +115,10 @@ a:hover {
     .Navbar__Items {
         display: none;
         padding: 15px;
+
     }
     .Navbar__Link {
-        padding-bottom: 10px;
+        /*padding-bottom: 10px;*/
         padding-left: 20px;
     }
     img{
@@ -148,6 +150,10 @@ a:hover {
     grid-area: article;
 }
 
+article a:hover {
+     color: #451a24;
+     text-decoration: none;
+}
 .mainBorder {
     padding: 10px;
     border: 1px solid #000;
