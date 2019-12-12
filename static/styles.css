@@ -11,9 +11,16 @@ body {
     grid-column-gap: 10px;
     height: 100vh;
     margin: 0;
-    /*background: url("bace_img.jpg");*/
-    /*background-size: cover;*/
-    background: rgb(255,255,255);
+    /*background: linear-gradient(0deg, rgba(252,255,223,0.8057598039215687) 0%, rgba(0,111,130,0.819765406162465) 100%);*/
+}
+
+body:before{
+   content:'';
+   position: fixed;
+   top: 0;
+   bottom: 0;
+   width: 100%;
+   z-index: -1;
     background: linear-gradient(0deg, rgba(252,255,223,0.8057598039215687) 0%, rgba(0,111,130,0.819765406162465) 100%);
 }
 
@@ -56,14 +63,14 @@ body {
 
 
 
-
-
 /*  Header */
 .pageHeader {
-    padding: 5px;
     grid-area: header;
-    /*background: rgb(0,98,115);*/
-
+    background: rgb(0,98,115);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
 }
 
 header a:hover {
@@ -109,7 +116,8 @@ header a:hover {
     .Navbar__Items,
     .Navbar {
         flex-direction: column;
-        background-color: rgb(0,111,130);
+        /*background-color: rgb(0,111,130);*/
+        /*border-radius: 20px;*/
     }
 
     .Navbar__Items {
@@ -143,12 +151,13 @@ header a:hover {
     }
 }
 
-/* Main part page */
+/* Main part article page */
 .mainArticle {
     border: 1px solid #000;
     grid-area: article;
     box-sizing: border-box;
     justify-content: center;
+    margin-top: 5px;
 }
 
 main a{

@@ -29,3 +29,8 @@ if __name__ == '__main__':
 # manage.py startapp django_blog
 # py manage.py runserver
 # py manage.py migrate
+# py manage.py createsuperuser
+# admin admin
+# py manage.py makemigrations
+# py manage.py migrate
+# p2 = Post.objects.create(title='Second blog post', slug='second_blog_post', body='Second post content Second post content Second post content Second post content Second post content Second post content', author=user)
