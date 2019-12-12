@@ -1,7 +1,7 @@
 {% extends 'my_blog/blog_base.html' %}
 
 {% block title %}
-    Blog
+    Posts
 {% endblock %}
 
 
@@ -17,10 +17,11 @@
             </div>
             <h2><a class="article-title" href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
             <p class="article-content">{{ post.body|truncatewords:20 }}</p>
-                <a href="">{{ post.tag }}</a>
+                <a href="{% url 'tags_list' %}">{{ post.tags }}</a>
           </div>
           </div>
 {#        </article>#}
+
     {% endfor %}
 
 {% endblock %}

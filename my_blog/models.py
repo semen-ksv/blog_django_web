@@ -30,4 +30,8 @@ class Tag(models.Model):
     def __str__(self):
         return f'{self.tag}'
 
+    def get_absolute_url(self):
+        """generate unike url path for post"""
+        return reverse('tag_detail', kwargs={'slug': self.slug})
+
 
