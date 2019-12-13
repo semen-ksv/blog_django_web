@@ -16,7 +16,7 @@
             </div>
 
             <p class="article-content">{{ post.body }}</p>
-            <a href="{% url 'tags_list' %}">{{ post.tags }}</a>
+            <a href="{% url 'tags_list' %}" class="badge badge-pill badge-dark">{{ post.tags }}</a>
         </div>
     </div>
 

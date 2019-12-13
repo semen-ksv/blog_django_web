@@ -16,7 +16,7 @@ class Post(models.Model):
     tags = models.ManyToManyField('Tag', blank=True, related_name='posts')
 
     def __str__(self):
-        return f'{self.title}'
+        return f'{self.title}, {self.author}, {self.tags}'
 
     def get_absolute_url(self):
         """generate unike url path for post"""
@@ -25,7 +25,7 @@ class Post(models.Model):
 
 class Tag(models.Model):
     tag = models.CharField(max_length=10, unique=True)
-    slug = models.CharField(max_length=50, unique=True)
+    slug = models.SlugField(max_length=50, unique=True)
 
     def __str__(self):
         return f'{self.tag}'

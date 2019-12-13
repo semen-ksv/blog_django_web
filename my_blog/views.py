@@ -12,12 +12,12 @@ def post_detail(request, slug):
     """Create page with post content"""
     if request.method == 'GET':
         post = Post.objects.get(slug__iexact=slug)
+        print(post.tags)
+        print(post)
         return render(request, 'my_blog/post_detail.html', context={'post': post})
 
 def tags_list(request):
-
     tags = Tag.objects.all()
-    print(tags)
     return render(request, 'my_blog/tag_list.html', context={'tags': tags})
 
 def tag_detail(request, slug):

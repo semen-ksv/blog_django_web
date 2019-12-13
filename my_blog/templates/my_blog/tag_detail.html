@@ -6,20 +6,10 @@
 
 
 {% block content %}
-    <h1 class="mb-5"> Post with "{{ tag.tag }}"</h1>
+    <div style="padding: 1%;"><h2 class="mb-3"> Post with "{{ tag.tag }}" tag:</h2></div>
 
-    {% for post in tag.all %}
-        <div class="media-body">
-            <div class="media-article">
-                <div class="article-metadata">
-                    <a class="mr-2" href="#">{{ post.author }}</a>
-                    <small class="text-muted">{{ post.date_posted }}</small>
-                </div>
-                <h2><a class="article-title" href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-                <p class="article-content">{{ post.body|truncatewords:20 }}</p>
-                <a href="{% url 'tags_list' %}">{{ post.tags }}</a>
-            </div>
-        </div>
+    {% for post in tag.posts.all %}
+        {%  include 'my_blog/includes/post_cards_template.html' %}
     {% endfor %}
 
 {% endblock %}

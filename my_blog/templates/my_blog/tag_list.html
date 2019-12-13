@@ -9,7 +9,7 @@
     <h1 class="mb-5">Tags:</h1>
 
     {% for tag in tags %}
-        <a href="{{ tag.get_absolute_url}}"><h3>{{ tag.tag }}</h3></a>
+        <a href="{{ tag.get_absolute_url}}" class="badge badge-pill badge-dark"><h5>{{ tag.tag }}</h5></a>
     {% endfor %}
 
 {% endblock %}
