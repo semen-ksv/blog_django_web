@@ -17,13 +17,20 @@
 <body>
 <header class="pageHeader">
     <div class="Navbar">
-        <div class="Navbar__Link Navbar__Link-brand">
+        <div class="">
             <a href="{% url 'index_page' %}">
                <img src="{% static 'images/Logo_blog.png' %}" alt="BLOG" >
             </a>
         </div>
         <div class="Navbar__Link Navbar__Link-toggle">
-            <i class="fas fa-bars"></i>
+{#                        <i class="fas fa-bars"></i>#}
+            <div class="nav_button">
+                <div class="button_row"></div>
+                <div class="button_row"></div>
+                <div class="button_row"></div>
+            </div>
+
+
         </div>
         <nav class="Navbar__Items">
             <div class="Navbar__Link">

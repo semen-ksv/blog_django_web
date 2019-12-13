@@ -1,4 +1,4 @@
-/*  Dody */
+/*  Body */
 body {
     display: grid;
     grid-template-areas:
@@ -66,7 +66,7 @@ body:before{
 /*  Header */
 .pageHeader {
     grid-area: header;
-    background: rgb(0,98,115);
+    background: rgb(71, 152, 162);
     position: fixed;
     width: 100%;
     top: 0;
@@ -99,7 +99,7 @@ header a:hover {
 
 .Navbar__Items {
     display: flex;
-    padding: 40px;
+    padding: 40px 30px;
 
 }
 
@@ -151,6 +151,30 @@ header a:hover {
     }
 }
 
+/*Navbar Button*/
+.nav_button{
+    margin-top: 30px;
+    margin-right: 30px;
+    width: 40px;
+    height: 35px;
+    transition: 0.4s;
+}
+
+.button_row{
+    flex: auto;
+    margin: 8px 5px;
+    background-color: white;
+    width: 30px;
+    height: 5px;
+    border-radius: 10px;
+}
+
+.nav_button:hover{
+    transform: rotate(-90deg);
+}
+
+
+
 /* Main part article page */
 .mainArticle {
     border: 1px solid #000;
@@ -196,6 +220,10 @@ small.text-muted {
     margin: 0;
 }
 
+a.badge-dark:focus, a.badge-dark:hover {
+    color: #0e0e0e;
+    background-color: #78e3ff;
+}
 /*registration forms*/
 .register{
     padding: 10px;
