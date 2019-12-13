@@ -69,17 +69,15 @@
 <main class="mainArticle container">
 
     <div class="main_content">
-      {% block content %}
+        {% block message %}
+        {% endblock %}
+
+        {% block content %}
             Some content
-      {% endblock %}
+        {% endblock %}
     </div>
 
     </br>
-{#    <div>#}
-{#        {% block content %}#}
-{#            There is no any content.#}
-{#        {% endblock %}#}
-{#    </div>#}
 
 </main>
 

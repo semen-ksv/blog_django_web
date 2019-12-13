@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from . import views
+from users.views import register
 
 
 urlpatterns = [
@@ -24,9 +25,11 @@ urlpatterns = [
     path('', views.main_index, name='index_page'),
     path('blog/', include('my_blog.urls')),
     path('about/', views.about),
+    path('register/', register, name='register'),
 ]
 
 # Start Debug toolbar/ use only Debug = True
 if settings.DEBUG:
     import debug_toolbar
-    urlpatterns += [path('__debug__/', include(debug_toolbar.urls))]
+    urlpatterns += [path('__debug__/', include(debug_toolbar.urls)),
+    ]

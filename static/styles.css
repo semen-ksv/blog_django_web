@@ -196,6 +196,14 @@ small.text-muted {
     margin: 0;
 }
 
+/*registration forms*/
+.register{
+    padding: 10px;
+    margin-top: 5%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
 .mainBorder {
     padding: 10px;
     border: 1px solid #000;

@@ -4,6 +4,15 @@
     Blog
 {% endblock %}
 
+{% block message %}
+    {% if messages %}
+        {% for massage in messages %}
+            <div class="alert alert-{{ message.tags }}" role="alert">
+                {{ massage }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
 
 
 {% block content %}

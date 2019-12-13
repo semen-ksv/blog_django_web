@@ -40,10 +40,18 @@ INSTALLED_APPS = [
     # debug:
     'debug_toolbar',
     # my apps:
-    'my_blog'
+    'my_blog.apps.MyBlogConfig',
+    'users.apps.UsersConfig',
+    #crispi forms
+    'crispy_forms',
+]
+
+INTERNAL_IPS = [
+    '127.0.0.1',
 ]
 
 MIDDLEWARE = [
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -133,3 +141,5 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
