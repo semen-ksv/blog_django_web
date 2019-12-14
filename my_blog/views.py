@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from .models import Post, Tag
+from django.shortcuts import get_object_or_404
 from django.views.generic import View
 
+from .models import Post, Tag
+from .utilities import ObjectDetailMixin
 
 def blog_posts_list(request):
     """Create main page in blog page"""
@@ -23,14 +25,24 @@ def tags_list(request):
 #     tag = Tag.objects.get(slug__iexact=slug)
 #     return render(request, 'my_blog/tag_detail.html', context={'tag': tag})
 
-class PostDetail(View):
-    def get(self, request, slug):
-        """Create page with post content"""
-        post = Post.objects.get(slug__iexact=slug)
-        return render(request, 'my_blog/post_detail.html', context={'post': post})
+class PostDetail(ObjectDetailMixin, View):
+    # def get(self, request, slug):
+    #     """Create page with post content"""
+    #     # post = Post.objects.get(slug__iexact=slug)
+    #     post = get_object_or_404(Post, slug__iexact=slug)
+    #     return render(request, 'my_blog/post_detail.html', context={'post': post})
+    model = Post
+    template = 'my_blog/post_detail.html'
 
-class TagDetail(View):
-    def get(self, request, slug):
-        tag = Tag.objects.get(slug__iexact=slug)
-        return render(request, 'my_blog/tag_detail.html', context={'tag': tag})
+
+
+
+class TagDetail(ObjectDetailMixin, View):
+    # def get(self, request, slug):
+    #     # tag = Tag.objects.get(slug__iexact=slug)
+    #     tag = get_object_or_404(Tag, slug__iexact=slug)
+    #     return render(request, 'my_blog/tag_detail.html', context={'tag': tag})
+
+    model = Tag
+    template = 'my_blog/tag_detail.html'
 
