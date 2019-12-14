@@ -241,10 +241,15 @@ small.text-muted {
 
 .article-title {
     font-size: 26px;
+
 }
 
 .content-section {
     margin: 0;
+}
+
+.article-metadata{
+    width: 95%;
 }
 
 a.badge-dark:focus, a.badge-dark:hover {
