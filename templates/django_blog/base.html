@@ -50,18 +50,26 @@
                     find
                 </a>
             </div>
-            <div class="Navbar__Link">
-                <a class="Navbar__Link" href="">
+
+            {% if  user.is_authenticated %}
+
+                <div class="Navbar__Link">
+                <a class="Navbar__Link" href="{% url 'logout' %}">
+                    <i class="fas fa-user-secret"></i>
+                    logout
+                </a>
+                </div>
+
+            {% else %}
+
+                <div class="Navbar__Link">
+                <a class="Navbar__Link" href="{% url 'login' %}">
                     <i class="fas fa-user-check"></i>
                     login
                 </a>
-            </div>
-{#            <div class="Navbar__Link">#}
-{#                <a class="Navbar__Link" href="">#}
-{#                    <i class="fas fa-user-secret"></i>#}
-{#                    logout#}
-{#                </a>#}
-{#            </div>#}
+                </div>
+
+            {% endif %}
 {#            <div class="Navbar__Link">#}
 {#                <a class="Navbar__Link" href="">#}
 {#                    <i class="fas fa-plus"></i>#}

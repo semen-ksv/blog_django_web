@@ -2,12 +2,17 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.shortcuts import reverse
+from django.utils.text import slugify
+from time import time
 
-# Create your models here.
+def generate_slug(title):
+    new_slug = slugify(title, allow_unicode=True)
+    return new_slug + '_' + str(int(time()))
+
 
 class Post(models.Model):
     title = models.CharField(max_length=150, db_index=True)
-    slug = models.SlugField(max_length=150, unique=True)
+    slug = models.SlugField(max_length=150, blank=True, unique=True)
     body = models.TextField(blank=True, db_index=True)
     date_posted = models.DateField(default=timezone.now)
     # foreign keys
@@ -21,6 +26,14 @@ class Post(models.Model):
     def get_absolute_url(self):
         """generate unike url path for post"""
         return reverse('post_detail', kwargs={'slug': self.slug})
+
+    def save(self, *args, **kwargs):
+        """generate and save new slug for new title"""
+        if not self.id:
+            self.slug = generate_slug(self.title)
+        # if not self.author:
+        #     self.author = use
+        super().save(*args, **kwargs)
 
 
 class Tag(models.Model):
