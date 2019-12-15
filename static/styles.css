@@ -265,11 +265,29 @@ a.badge-dark:focus, a.badge-dark:hover {
     margin-right: 20%;
 }
 
+/*Tag creation form*/
+.tag_form{
+    display: flex;
+    padding: 10px;
+    width: 100%;
+    height: 400px;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-group{
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 2;
+}
 
 /* lEFT Navigation menu*/
 .mainBorder {
     padding: 50% 15%;
-
     grid-area: aside;
 
 }
@@ -293,7 +311,9 @@ a.badge-dark:focus, a.badge-dark:hover {
 
 .nuvcover nav ul li {
     font-size: 18px;
-    font-family: sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     background-color: rgba(158, 20, 167, 0);
     /*border: 2px solid black;*/
     letter-spacing: 0.1em;
@@ -305,9 +325,7 @@ a.badge-dark:focus, a.badge-dark:hover {
     margin: 0.5em;
     cursor: pointer;
     /*border-radius: 10px;*/
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
 }
 
 .nuvcover nav ul li span {
