@@ -4,7 +4,7 @@ from django.views.generic import View
 
 from .models import Post, Tag
 from .utilities import ObjectDetailMixin
-from .forms import TagForm
+from .forms import TagForm, PostForm
 
 
 def blog_posts_list(request):
@@ -33,6 +33,23 @@ class PostDetail(ObjectDetailMixin, View):
     #     return render(request, 'my_blog/post_detail.html', context={'post': post})
     model = Post
     template = 'my_blog/post_detail.html'
+
+class PostCreate(View):
+    def get(self, request):
+        """form for creating Tags"""
+        form = PostForm()
+        return render(request, 'my_blog/post_create.html', context={'form': form})
+
+    def post(self, request):
+        """read data from forms"""
+        bound_form = PostForm(request.POST)  # связаная форма
+
+        if bound_form.is_valid():
+            new_post = bound_form.save()
+            return redirect(new_post)
+        return render(request, 'my_blog/post_create.html', context={'form': bound_form})
+
+
 
 
 class TagDetail(ObjectDetailMixin, View):
