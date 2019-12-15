@@ -110,14 +110,14 @@ header a:hover {
 
 
 .Navbar__Link {
-    padding-right: 15px;
+    padding-right: 10px;
     text-decoration: none;
     color: white;
 }
 
 .Navbar__Items {
     display: flex;
-    padding: 40px 30px;
+    padding: 40px 0 30px 10px;
 
 }
 
@@ -138,21 +138,17 @@ header a:hover {
     .Navbar__Items,
     .Navbar {
         flex-direction: column;
-        /*background-color: rgb(0,111,130);*/
-        /*border-radius: 20px;*/
     }
 
     .Navbar__Items {
         display: none;
-        padding-left: 30px;
-        padding-top: 20px;
-        padding-bottom: 0;
+        padding: 0;
 
     }
 
     .Navbar__Link {
         /*padding-bottom: 10px;*/
-        padding-left: 20px;
+        padding: 0 0 0 10px;
         margin-bottom: 10px;
     }
 
@@ -163,7 +159,7 @@ header a:hover {
 
     .Navbar__Items--right {
         flex-direction: row;
-        padding-top: 0;
+        padding: 0 10px 0 10px;
     }
 
     .Navbar__ToggleShow {

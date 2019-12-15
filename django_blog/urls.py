@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.contrib.auth import views as auth_views
 from . import views
-from users.views import register
+from users.views import *
 
 
 urlpatterns = [
@@ -26,6 +26,7 @@ urlpatterns = [
     path('blog/', include('my_blog.urls')),
     path('about/', views.about),
     path('register/', register, name='register'),
+    path('profile/', profile, name='profile'),
     path('login/', auth_views.LoginView.as_view(template_name='user/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='user/logout.html'), name='logout'),
     path('', views.main_index, name='index_page'),
