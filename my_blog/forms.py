@@ -4,23 +4,36 @@ from django.core.exceptions import ValidationError
 from .models import Tag
 
 
-class TagForm(forms.Form):
-    tag = forms.CharField(max_length=50)
-    slug = forms.SlugField(max_length=50)
+class TagForm(forms.ModelForm):
+    # class TagForm(forms.Form):
+    # tag = forms.CharField(max_length=50)
+    # slug = forms.SlugField(max_length=50)
+    #
+    # # giv butstrap views for form
+    # tag.widget.attrs.update({'class': 'form-control'})
+    # slug.widget.attrs.update({'class': 'form-control'})
 
-    # giv butstrap views for form
-    tag.widget.attrs.update({'class': 'form-control'})
-    slug.widget.attrs.update({'class': 'form-control'})
+    class Meta:
+        model = Tag
+        fields = ['tag', 'slug']
+
+        # giv butstrap views for f
+        widgets = {
+            'tag': forms.TextInput(attrs={'class': 'form-control'}),
+            'slug': forms.TextInput(attrs={'class': 'form-control'}),
+        }
 
     def clean_slug(self):
         """make all slug with lowercase"""
         new_slug = self.cleaned_data['slug'].lower()
 
         if new_slug == 'create':
-            raise ValidationError('Slug may not be "Create')
+            raise ValidationError(f'Slug {new_slug} may not be "Create"!')
+        if Tag.objects.filter(slug__iexact=new_slug).count():
+            raise ValidationError(f'Slug {new_slug} is already exists!')
         return new_slug
 
-    def save(self):
-        """create new slug with method clean_data"""
-        new_tag = Tag.objects.create(tag=self.cleaned_data['tag'], slug=self.cleaned_data['slug'])
-        return new_tag
+    # def save(self):
+    #     """create new slug with method clean_data"""
+    #     new_tag = Tag.objects.create(tag=self.cleaned_data['tag'], slug=self.cleaned_data['slug'])
+    #     return new_tag

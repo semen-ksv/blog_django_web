@@ -34,6 +34,9 @@ body:before {
     .siteAds {
         display: none;
     }
+    .mainBorder {
+    padding: 50% 12%;
+    }
 }
 
 /* Stack the layout on small devices/viewports. */
@@ -252,6 +255,10 @@ small.text-muted {
     width: 95%;
 }
 
+a.badge-dark{
+    font-weight: normal;
+}
+
 a.badge-dark:focus, a.badge-dark:hover {
     color: #0e0e0e;
     background-color: #78e3ff;
@@ -287,7 +294,7 @@ a.badge-dark:focus, a.badge-dark:hover {
 
 /* lEFT Navigation menu*/
 .mainBorder {
-    padding: 50% 15%;
+    padding: 50% 20%;
     grid-area: aside;
 
 }
@@ -331,6 +338,7 @@ a.badge-dark:focus, a.badge-dark:hover {
 .nuvcover nav ul li span {
     color: white;
     mix-blend-mode: difference;
+    font-size: 22px;
 }
 
 .nuvcover nav ul li::before {

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from django.views.generic import View
 
@@ -6,11 +6,13 @@ from .models import Post, Tag
 from .utilities import ObjectDetailMixin
 from .forms import TagForm
 
+
 def blog_posts_list(request):
     """Create main page in blog page"""
     if request.method == 'GET':
         posts = Post.objects.all()
         return render(request, 'my_blog/blog_post_list.html', context={'posts': posts})
+
 
 # def post_detail(request, slug):
 #     """Create page with post content"""
@@ -48,6 +50,14 @@ class TagCreate(View):
         form = TagForm()
         return render(request, 'my_blog/tag_create.html', context={'form': form})
 
+    def post(self, request):
+        """read data from forms"""
+        bound_form = TagForm(request.POST)
+
+        if bound_form.is_valid():
+            new_tag = bound_form.save()
+            return redirect(new_tag)
+        return render(request, 'my_blog/tag_create.html', context={'form': bound_form})
 
 
 def tags_list(request):
