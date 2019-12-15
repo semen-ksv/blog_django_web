@@ -1,4 +1,5 @@
 from django.db import models
+from django.http import request
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.shortcuts import reverse
@@ -32,7 +33,7 @@ class Post(models.Model):
         if not self.id:
             self.slug = generate_slug(self.title)
         # if not self.author:
-        #     self.author = use
+        #     self.author = User.username
         super().save(*args, **kwargs)
 
 

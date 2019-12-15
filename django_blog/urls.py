@@ -16,24 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
-from django.contrib.auth import views as auth_views
+
 from . import views
 from users.views import *
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('profile/', include('users.urls')),
     path('blog/', include('my_blog.urls')),
     path('about/', views.about),
-    path('register/', register, name='register'),
-    path('profile/', profile, name='profile'),
-    path('login/', auth_views.LoginView.as_view(template_name='user/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(template_name='user/logout.html'), name='logout'),
     path('', views.main_index, name='index_page'),
 ]
 
 # Start Debug toolbar/ use only Debug = True
 if settings.DEBUG:
     import debug_toolbar
-    urlpatterns += [path('__debug__/', include(debug_toolbar.urls)),
-    ]
+    urlpatterns += [path('__debug__/', include(debug_toolbar.urls))]

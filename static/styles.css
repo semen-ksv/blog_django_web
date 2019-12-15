@@ -338,7 +338,7 @@ a.badge-dark:focus, a.badge-dark:hover {
     width: 1.5em;
     height: inherit;
     background-color: #78e3ff;
-    border-radius: 50%;
+    border-radius: 20%;
     top: 0;
     left: -0.75em;
     transition: 0.5s ease-out;

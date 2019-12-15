@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from django.views.generic import View
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Post, Tag
 from .utilities import ObjectDetailMixin
@@ -35,14 +35,13 @@ class PostDetail(ObjectDetailMixin, View):
     model = Post
     template = 'my_blog/post_detail.html'
 
-class PostCreate(View):
-    # @login_required
+class PostCreate(LoginRequiredMixin, View):
+    redirect_field_name = 'login'
     def get(self, request):
         """form for creating Tags"""
         form = PostForm()
         return render(request, 'my_blog/post_create.html', context={'form': form})
 
-    # @login_required
     def post(self, request):
         """read data from forms"""
         bound_form = PostForm(request.POST)  # связаная форма
