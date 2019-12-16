@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
-from django.views.generic import View
+from django.views.generic import View, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Post, Tag
@@ -9,11 +9,17 @@ from .utilities import ObjectDetailMixin, ObjectCreateMixin, ObjectUpdateMixin, 
 from .forms import TagForm, PostForm
 
 
-def blog_posts_list(request):
-    """Create main page in blog page"""
-    if request.method == 'GET':
-        posts = Post.objects.all()
-        return render(request, 'my_blog/blog_post_list.html', context={'posts': posts})
+# def blog_posts_list(request):
+#     """Create main page in blog page"""
+#     if request.method == 'GET':
+#         posts = Post.objects.all()
+#         return render(request, 'my_blog/blog_post_list.html', context={'posts': posts})
+
+class PostsList(ListView):
+    model = Post
+    template_name = 'my_blog/blog_post_list.html'
+    context_object_name = 'posts'
+    ordering = ['-date_posted']
 
 
 # def post_detail(request, slug):
@@ -36,6 +42,7 @@ class PostDetail(ObjectDetailMixin, View):
     model = Post
     template = 'my_blog/post_detail.html'
 
+
 class PostCreate(LoginRequiredMixin, ObjectCreateMixin, View):
     redirect_field_name = 'login'
     # def get(self, request):
@@ -56,7 +63,6 @@ class PostCreate(LoginRequiredMixin, ObjectCreateMixin, View):
 
 
 class PostUpdate(LoginRequiredMixin, ObjectUpdateMixin, View):
-
     model = Post
     form = PostForm
     template = 'my_blog/post_update.html'
@@ -121,6 +127,12 @@ class TagDelete(LoginRequiredMixin, ObjectDeleteMixin, View):
     redirect_url = 'tags_list'
 
 
-def tags_list(request):
-    tags = Tag.objects.all()
-    return render(request, 'my_blog/tag_list.html', context={'tags': tags})
+# def tags_list(request):
+#     tags = Tag.objects.all()
+#     return render(request, 'my_blog/tag_list.html', context={'tags': tags})
+
+class TagsList(ListView):
+    model = Tag
+    template_name = 'my_blog/tag_list.html'
+    context_object_name = 'tags'
+    ordering = ['tag']
