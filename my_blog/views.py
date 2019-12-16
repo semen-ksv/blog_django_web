@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
+from django.urls import reverse
 from django.views.generic import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Post, Tag
-from .utilities import ObjectDetailMixin, ObjectCreateMixin, ObjectUpdateMixin
+from .utilities import ObjectDetailMixin, ObjectCreateMixin, ObjectUpdateMixin, ObjectDeleteMixin
 from .forms import TagForm, PostForm
 
 
@@ -54,12 +55,17 @@ class PostCreate(LoginRequiredMixin, ObjectCreateMixin, View):
     template = 'my_blog/post_create.html'
 
 
-class PostUpdate(ObjectUpdateMixin, View):
+class PostUpdate(LoginRequiredMixin, ObjectUpdateMixin, View):
 
     model = Post
     form = PostForm
     template = 'my_blog/post_update.html'
 
+
+class PostDelete(LoginRequiredMixin, ObjectDeleteMixin, View):
+    model = Post
+    template = 'my_blog/post_delete.html'
+    redirect_url = 'blog_home'
 
 
 class TagDetail(ObjectDetailMixin, View):
@@ -71,7 +77,7 @@ class TagDetail(ObjectDetailMixin, View):
     template = 'my_blog/tag_detail.html'
 
 
-class TagCreate(ObjectCreateMixin, View):
+class TagCreate(LoginRequiredMixin, ObjectCreateMixin, View):
     # def get(self, request):
     #     """form for creating Tags"""
     #     form = TagForm()
@@ -89,7 +95,7 @@ class TagCreate(ObjectCreateMixin, View):
     template = 'my_blog/tag_create.html'
 
 
-class TagUpdate(ObjectUpdateMixin, View):
+class TagUpdate(LoginRequiredMixin, ObjectUpdateMixin, View):
     # """modification existing tags"""
     # def get(self, request, slug):
     #     tag = Tag.objects.get(slug__iexact=slug)
@@ -108,6 +114,11 @@ class TagUpdate(ObjectUpdateMixin, View):
     form = TagForm
     template = 'my_blog/tag_update.html'
 
+
+class TagDelete(LoginRequiredMixin, ObjectDeleteMixin, View):
+    model = Tag
+    template = 'my_blog/tag_delete.html'
+    redirect_url = 'tags_list'
 
 
 def tags_list(request):

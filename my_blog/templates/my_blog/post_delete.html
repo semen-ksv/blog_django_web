@@ -1,0 +1,31 @@
+{% extends 'my_blog/blog_base.html' %}
+
+{% block title %}
+    Delete {{ post.taitle }}
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="tag_form" style="">
+        <form action="{% url 'post_delete' slug=post.slug %}" method="post">
+            {% csrf_token %}
+
+            <h3>Are you sure you want to delete post: <b>"{{ post.title|title }}"</b>?</h3>
+            <h5>Created by <b>{{ post.author }}</b>, date {{ post.date_posted }}.</h5>
+
+            <br>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <a type="button" class="btn btn-outline-info" href="{{ post.get_absolute_url }}">
+                    Cancel
+                </a>
+
+                <button type="submit" class="btn btn-outline-danger" style="">
+                    Delete
+                </button>
+            </div>
+        </form>
+    </div>
+
+
+{% endblock %}

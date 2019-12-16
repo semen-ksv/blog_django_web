@@ -1,0 +1,30 @@
+{% extends 'my_blog/blog_base.html' %}
+
+{% block title %}
+    Delete {{ tag.tag }}
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="tag_form" style="">
+        <form action="{% url 'tag_delete' slug=tag.slug %}" method="post">
+            {% csrf_token %}
+
+            <h3>Are you sure you want to delete <b>{{ tag.tag|title }}</b> tag?</h3>
+
+            <br>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <a type="button" class="btn btn-outline-info" href="{{ tag.get_absolute_url }}">
+                    Cancel
+                </a>
+
+                <button type="submit" class="btn btn-outline-danger" style="">
+                    Delete
+                </button>
+            </div>
+        </form>
+    </div>
+
+
+{% endblock %}
