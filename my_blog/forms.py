@@ -51,7 +51,6 @@ class PostForm(forms.ModelForm):
             # 'author': forms.SelectMultiple(attrs={'class': 'form-control'}),
             'tags': forms.SelectMultiple(attrs={'class': 'form-control'}),
         }
-        #TODO: auto choose Author for posts
 
     def clean_slug(self):
         """make all slug with lowercase"""

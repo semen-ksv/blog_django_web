@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
-from django.views.generic import View, ListView
+from django.views.generic import View, ListView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Post, Tag
@@ -43,7 +43,7 @@ class PostDetail(ObjectDetailMixin, View):
     template = 'my_blog/post_detail.html'
 
 
-class PostCreate(LoginRequiredMixin, ObjectCreateMixin, View):
+class PostCreate(LoginRequiredMixin, ObjectCreateMixin, CreateView):
     redirect_field_name = 'login'
     # def get(self, request):
     #     """form for creating Tags"""
@@ -58,8 +58,13 @@ class PostCreate(LoginRequiredMixin, ObjectCreateMixin, View):
     #         new_post = bound_form.save()
     #         return redirect(new_post)
     #     return render(request, 'my_blog/post_create.html', context={'form': bound_form})
+    # model = Post
     form_model = PostForm
     template = 'my_blog/post_create.html'
+
+    # def form_valid(self, form):
+    #     form.instance.author = self.request.user
+    #     return super().form_valid(form)
 
 
 class PostUpdate(LoginRequiredMixin, ObjectUpdateMixin, View):
