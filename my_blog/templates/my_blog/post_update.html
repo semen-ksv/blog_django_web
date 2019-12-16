@@ -1,7 +1,7 @@
 {% extends 'my_blog/blog_base.html' %}
 
 {% block title %}
-    Post Create
+    Update post {{ post.title }}
 {% endblock %}
 
 
@@ -9,7 +9,7 @@
 
 
 <div class="post_form" >
-    <form action="{% url 'post_create' %}" method="post">
+    <form action="{{ post.get_update_url }}" method="post">
         {% csrf_token %}
 
         {% for field in form %}
@@ -22,14 +22,16 @@
 
 {#                <div class="form-group">#}
                     {{ field.label }}
+
                     {{ field }}
+
 {#                </div>#}
             </div>
         {% endfor %}
 
 
         <button type="submit" class="btn btn-outline-info" style="">
-            Create Post
+            Update Post
         </button>
     </form>
 </div>

@@ -4,7 +4,7 @@ from django.views.generic import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Post, Tag
-from .utilities import ObjectDetailMixin, ObjectCreateMixin
+from .utilities import ObjectDetailMixin, ObjectCreateMixin, ObjectUpdateMixin
 from .forms import TagForm, PostForm
 
 
@@ -35,7 +35,7 @@ class PostDetail(ObjectDetailMixin, View):
     model = Post
     template = 'my_blog/post_detail.html'
 
-class PostCreate(ObjectCreateMixin, LoginRequiredMixin, View):
+class PostCreate(LoginRequiredMixin, ObjectCreateMixin, View):
     redirect_field_name = 'login'
     # def get(self, request):
     #     """form for creating Tags"""
@@ -50,10 +50,15 @@ class PostCreate(ObjectCreateMixin, LoginRequiredMixin, View):
     #         new_post = bound_form.save()
     #         return redirect(new_post)
     #     return render(request, 'my_blog/post_create.html', context={'form': bound_form})
-
     form_model = PostForm
     template = 'my_blog/post_create.html'
 
+
+class PostUpdate(ObjectUpdateMixin, View):
+
+    model = Post
+    form = PostForm
+    template = 'my_blog/post_update.html'
 
 
 
@@ -82,6 +87,27 @@ class TagCreate(ObjectCreateMixin, View):
     #     return render(request, 'my_blog/tag_create.html', context={'form': bound_form})
     form_model = TagForm
     template = 'my_blog/tag_create.html'
+
+
+class TagUpdate(ObjectUpdateMixin, View):
+    # """modification existing tags"""
+    # def get(self, request, slug):
+    #     tag = Tag.objects.get(slug__iexact=slug)
+    #     bound_form = TagForm(instance=tag)
+    #     return render(request, 'my_blog/tag_update.html', context={'form': bound_form, 'tag': tag})
+    #
+    # def post(self, request, slug):
+    #     tag = Tag.objects.get(slug__iexact=slug)
+    #     bound_form = TagForm(request.POST, instance=tag)
+    #
+    #     if bound_form.is_valid():
+    #         new_tag = bound_form.save()
+    #         return redirect(new_tag)
+    #     return render(request, 'my_blog/tag_update.html', context={'form': bound_form, 'tag': tag})
+    model = Tag
+    form = TagForm
+    template = 'my_blog/tag_update.html'
+
 
 
 def tags_list(request):

@@ -6,6 +6,7 @@ from django.shortcuts import reverse
 from django.utils.text import slugify
 from time import time
 
+
 def generate_slug(title):
     new_slug = slugify(title, allow_unicode=True)
     return new_slug + '_' + str(int(time()))
@@ -28,6 +29,10 @@ class Post(models.Model):
         """generate unike url path for post"""
         return reverse('post_detail', kwargs={'slug': self.slug})
 
+    def get_update_url(self):
+        """:return url path for tags in update form"""
+        return reverse('post_update', kwargs={'slug': self.slug})
+
     def save(self, *args, **kwargs):
         """generate and save new slug for new title"""
         if not self.id:
@@ -44,8 +49,10 @@ class Tag(models.Model):
     def __str__(self):
         return self.tag
 
+    def get_update_url(self):
+        """:return url path for tags in update form"""
+        return reverse('tag_update', kwargs={'slug': self.slug})
+
     def get_absolute_url(self):
         """generate unike url path for tags"""
         return reverse('tag_detail', kwargs={'slug': self.slug})
-
-
