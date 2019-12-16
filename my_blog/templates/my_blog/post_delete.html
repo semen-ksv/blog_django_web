@@ -12,10 +12,10 @@
             {% csrf_token %}
 
             <h3>Are you sure you want to delete post: <b>"{{ post.title|title }}"</b>?</h3>
-            <h5>Created by <b>{{ post.author }}</b>, date {{ post.date_posted }}.</h5>
+            <h6>Created by <b>{{ post.author }}</b>, date {{ post.date_posted }}.</h6>
 
             <br>
-            <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="padding: 0 10% 0 10%; display: flex; justify-content: space-between; align-items: center;">
                 <a type="button" class="btn btn-outline-info" href="{{ post.get_absolute_url }}">
                     Cancel
                 </a>
