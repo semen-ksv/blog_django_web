@@ -4,7 +4,7 @@ from django.views.generic import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Post, Tag
-from .utilities import ObjectDetailMixin
+from .utilities import ObjectDetailMixin, ObjectCreateMixin
 from .forms import TagForm, PostForm
 
 
@@ -35,21 +35,24 @@ class PostDetail(ObjectDetailMixin, View):
     model = Post
     template = 'my_blog/post_detail.html'
 
-class PostCreate(LoginRequiredMixin, View):
+class PostCreate(ObjectCreateMixin, LoginRequiredMixin, View):
     redirect_field_name = 'login'
-    def get(self, request):
-        """form for creating Tags"""
-        form = PostForm()
-        return render(request, 'my_blog/post_create.html', context={'form': form})
+    # def get(self, request):
+    #     """form for creating Tags"""
+    #     form = PostForm()
+    #     return render(request, 'my_blog/post_create.html', context={'form': form})
+    #
+    # def post(self, request):
+    #     """read data from forms"""
+    #     bound_form = PostForm(request.POST)  # связаная форма
+    #
+    #     if bound_form.is_valid():
+    #         new_post = bound_form.save()
+    #         return redirect(new_post)
+    #     return render(request, 'my_blog/post_create.html', context={'form': bound_form})
 
-    def post(self, request):
-        """read data from forms"""
-        bound_form = PostForm(request.POST)  # связаная форма
-
-        if bound_form.is_valid():
-            new_post = bound_form.save()
-            return redirect(new_post)
-        return render(request, 'my_blog/post_create.html', context={'form': bound_form})
+    form_model = PostForm
+    template = 'my_blog/post_create.html'
 
 
 
@@ -63,20 +66,22 @@ class TagDetail(ObjectDetailMixin, View):
     template = 'my_blog/tag_detail.html'
 
 
-class TagCreate(View):
-    def get(self, request):
-        """form for creating Tags"""
-        form = TagForm()
-        return render(request, 'my_blog/tag_create.html', context={'form': form})
-
-    def post(self, request):
-        """read data from forms"""
-        bound_form = TagForm(request.POST)
-
-        if bound_form.is_valid():
-            new_tag = bound_form.save()
-            return redirect(new_tag)
-        return render(request, 'my_blog/tag_create.html', context={'form': bound_form})
+class TagCreate(ObjectCreateMixin, View):
+    # def get(self, request):
+    #     """form for creating Tags"""
+    #     form = TagForm()
+    #     return render(request, 'my_blog/tag_create.html', context={'form': form})
+    #
+    # def post(self, request):
+    #     """read data from forms"""
+    #     bound_form = TagForm(request.POST)
+    #
+    #     if bound_form.is_valid():
+    #         new_tag = bound_form.save()
+    #         return redirect(new_tag)
+    #     return render(request, 'my_blog/tag_create.html', context={'form': bound_form})
+    form_model = TagForm
+    template = 'my_blog/tag_create.html'
 
 
 def tags_list(request):
