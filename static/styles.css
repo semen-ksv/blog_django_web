@@ -325,7 +325,10 @@ a.badge-dark:focus, a.badge-dark:hover {
 
 }
 
-.nuvcover nav ul li span {
+.nuvcover nav ul li a {
+    text-decoration: none;
+}
+.nuvcover nav ul li a span {
     color: white;
     mix-blend-mode: difference;
     font-size: 22px;
@@ -358,16 +361,16 @@ a.badge-dark:focus, a.badge-dark:hover {
     display: block;
     margin-top: 10%;
     margin-bottom: 10%;
+
 }
 .right_panel{
-    display: block;
-    align-items: center;
-    justify-content: space-between;
+    margin-top: 17%;
 }
 
 .admin-panel{
     display: block;
     padding: 5%;
+    margin-top: 10%;
     position: fixed;
     vertical-align: bottom
 }
@@ -375,6 +378,7 @@ a.badge-dark:focus, a.badge-dark:hover {
 .admin-panel a{
     display: block;
     margin: 4%;
+    border-radius: 30%;
 }
 
 /*  FOOTER */

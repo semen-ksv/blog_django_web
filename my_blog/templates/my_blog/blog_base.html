@@ -1,7 +1,7 @@
 {% extends 'django_blog/base.html' %}
 
 {% block right %}
-    <div    class="right_panel">
+    <div class="right_panel">
         <div class="content-section">
             <h5 style="color: #4f4f4f">Most interesting post</h5>
 
@@ -19,6 +19,9 @@
                 <h5>Create panel</h5>
                 <a href="{% url 'post_create' %}" class="btn btn-outline-info">+Post</a>
                 <a href="{% url 'tag_create' %}" class="btn btn-outline-info">+Tag</a>
+                {% if user.is_staff %}
+                    <a href="/admin" class="btn btn-outline-info">Admin</a>
+                {% endif %}
             </div>
         {% endif %}
     </div>
@@ -28,11 +31,10 @@
     <div class="nuvcover">
         <nav>
             <ul>
-                <li><span>Home</span></li>
-                <li><span>Articles</span></li>
-                <li><span>Project</span></li>
-                <li><span>About me</span></li>
-                <li><span>Find</span></li>
+                <li><a href="" style=""><span>Home</span></a></li>
+                <li><a href=""><span>Articles</span></a></li>
+                <li><a href=""><span>Tags</span></a></li>
+                <li><a href=""><span>Find</span></a></li>
 
             </ul>
         </nav>

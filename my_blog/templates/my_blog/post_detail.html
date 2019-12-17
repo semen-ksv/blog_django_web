@@ -25,7 +25,7 @@
     </div>
     <br>
 
-    {% if user.is_authenticated and post.author == user %}
+    {% if user.is_authenticated and post.author == user or user.is_staff %}
 
         <div style="padding: 0 10% 0 10%; display: flex; justify-content: space-between; align-items: center;">
             <a type="button" class="btn btn-outline-info" href="{{ post.get_update_url }}">

@@ -45,6 +45,7 @@ class PostDetail(ObjectDetailMixin, View):
 
 class PostCreate(LoginRequiredMixin, ObjectCreateMixin, CreateView):
     redirect_field_name = 'login'
+    raise_exception = True
     # def get(self, request):
     #     """form for creating Tags"""
     #     form = PostForm()
@@ -68,12 +69,14 @@ class PostCreate(LoginRequiredMixin, ObjectCreateMixin, CreateView):
 
 
 class PostUpdate(LoginRequiredMixin, ObjectUpdateMixin, View):
+    raise_exception = True
     model = Post
     form = PostForm
     template = 'my_blog/post_update.html'
 
 
 class PostDelete(LoginRequiredMixin, ObjectDeleteMixin, View):
+    raise_exception = True
     model = Post
     template = 'my_blog/post_delete.html'
     redirect_url = 'blog_home'
@@ -89,6 +92,7 @@ class TagDetail(ObjectDetailMixin, View):
 
 
 class TagCreate(LoginRequiredMixin, ObjectCreateMixin, View):
+    raise_exception = True
     # def get(self, request):
     #     """form for creating Tags"""
     #     form = TagForm()
@@ -107,6 +111,7 @@ class TagCreate(LoginRequiredMixin, ObjectCreateMixin, View):
 
 
 class TagUpdate(LoginRequiredMixin, ObjectUpdateMixin, View):
+    raise_exception = True
     # """modification existing tags"""
     # def get(self, request, slug):
     #     tag = Tag.objects.get(slug__iexact=slug)
@@ -127,6 +132,7 @@ class TagUpdate(LoginRequiredMixin, ObjectUpdateMixin, View):
 
 
 class TagDelete(LoginRequiredMixin, ObjectDeleteMixin, View):
+    raise_exception = True
     model = Tag
     template = 'my_blog/tag_delete.html'
     redirect_url = 'tags_list'
