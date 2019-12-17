@@ -1,16 +1,26 @@
 {% extends 'django_blog/base.html' %}
 
 {% block right %}
-    <div class="content-section">
-        <h3>Our Sidebar</h3>
-        <p class='text-muted'>You can put any information here you'd like.</p>
-        <ul class="list-group">
-            <li class="list-group-item list-group-item-light">Latest Posts</li>
-            <li class="list-group-item list-group-item-light">Announcements</li>
-            <li class="list-group-item list-group-item-light">Calendars</li>
-            <li class="list-group-item list-group-item-light">etc</li>
-        </ul>
+    <div    class="right_panel">
+        <div class="content-section">
+            <h5 style="color: #4f4f4f">Most interesting post</h5>
 
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-light">Latest Posts</li>
+                <li class="list-group-item list-group-item-light">Announcements</li>
+                <li class="list-group-item list-group-item-light">Calendars</li>
+
+            </ul>
+
+        </div>
+        <br>
+        {% if  user.is_authenticated %}
+            <div class="admin-panel">
+                <h5>Create panel</h5>
+                <a href="{% url 'post_create' %}" class="btn btn-outline-info">+Post</a>
+                <a href="{% url 'tag_create' %}" class="btn btn-outline-info">+Tag</a>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}
 
@@ -27,4 +37,5 @@
             </ul>
         </nav>
     </div>
+
 {% endblock %}
