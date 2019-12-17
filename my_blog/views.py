@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views.generic import View, ListView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.paginator import Paginator
 
 from .models import Post, Tag
 from .utilities import ObjectDetailMixin, ObjectCreateMixin, ObjectUpdateMixin, ObjectDeleteMixin
@@ -20,6 +21,9 @@ class PostsList(ListView):
     template_name = 'my_blog/blog_post_list.html'
     context_object_name = 'posts'
     ordering = ['-date_posted']
+    paginate_by = 4
+
+
 
 
 # def post_detail(request, slug):

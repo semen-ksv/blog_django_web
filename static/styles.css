@@ -260,6 +260,32 @@ a.badge-dark:focus, a.badge-dark:hover {
     background-color: #78e3ff;
 }
 
+/* pagination */
+.pagination{
+    justify-content: center;
+}
+
+.page-link {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 14px;
+    z-index: 3;
+    color: #341a1a;
+    background-color: rgba(1,1,1,0);
+    border: none;
+}
+
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #048989;
+    background-color: rgba(1,1,1,0);
+    border: #00A4B6;
+    font-weight: bold;
+}
+
+
 /*registration forms*/
 .register {
     margin-top: 5%;
