@@ -45,10 +45,18 @@
         </nav>
         <nav class="Navbar__Items Navbar__Items--right">
             <div class="Navbar__Link">
-                <a class="Navbar__Link" href="">
-                    <i class="fas fa-search"></i>
-                    find
-                </a>
+{#                <a class="Navbar__Link" href="">#}
+{#                    <i class="fas fa-search"></i>#}
+{#                    find#}
+{#                </a>#}
+{#                <form >#}
+{#                  <input class="search-input" type="text" placeholder="Искать здесь...">#}
+{#                  <button class="search-button" type="submit"></button>#}
+{#                </form>#}
+                <div class="kodasegun">
+                    <i class="fas fa-search"></i><input name="search" id="search-engine" type="search">
+
+                </div>
             </div>
 
             {% if  user.is_authenticated %}
