@@ -24,8 +24,6 @@ class PostsList(ListView):
     paginate_by = 4
 
 
-
-
 # def post_detail(request, slug):
 #     """Create page with post content"""
 #     if request.method == 'GET':

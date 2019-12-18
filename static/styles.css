@@ -3,7 +3,7 @@ body {
     display: grid;
     grid-template-areas: "header header header" "aside article ads" "footer footer footer";
     grid-template-rows: 10% 1fr 7%;
-    grid-template-columns: 12% 1fr 20%;
+    grid-template-columns: 15% 1fr 15%;
     grid-row-gap: 10px;
     grid-column-gap: 10px;
     height: 100vh;
@@ -117,13 +117,14 @@ header a:hover {
 
 .Navbar__Items {
     display: flex;
-    padding: 40px 0 30px 10px;
+    padding: 40px 10px 30px 10px;
 
 }
 
 .Navbar__Items--right {
     margin-left: auto;
     font-size: 12px;
+    padding-right: 15px;
 }
 
 .Navbar__Link-toggle {
@@ -148,7 +149,7 @@ header a:hover {
 
     .Navbar__Link {
         /*padding-bottom: 10px;*/
-        padding: 0 0 0 10px;
+        padding: 0 0 0 20px;
         margin-bottom: 10px;
     }
 
@@ -281,8 +282,20 @@ a.badge-dark:focus, a.badge-dark:hover {
     z-index: 3;
     color: #048989;
     background-color: rgba(1,1,1,0);
-    border: #00A4B6;
+    border: 1px;
+    border-radius: 5px;
+    border-color: #00A4B6;
     font-weight: bold;
+    font-size: 15px;
+}
+
+.page-link:hover {
+    color: #451a24;
+    text-decoration: none;
+    background-color: #66f3ff;
+    border-radius: 10px;
+    z-index: 3;
+
 }
 
 

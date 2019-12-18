@@ -31,9 +31,9 @@
     <div class="nuvcover">
         <nav>
             <ul>
-                <li><a href="" style=""><span>Home</span></a></li>
-                <li><a href=""><span>Articles</span></a></li>
-                <li><a href=""><span>Tags</span></a></li>
+                <li><a href="{% url 'index_page' %}" style=""><span>Home</span></a></li>
+                <li><a href="{%  url 'blog_home' %}"><span>Articles</span></a></li>
+                <li><a href="{% url 'tags_list' %}"><span>Tags</span></a></li>
                 <li><a href=""><span>Find</span></a></li>
 
             </ul>
