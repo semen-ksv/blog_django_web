@@ -21,7 +21,7 @@ class PostsList(ListView):
     template_name = 'my_blog/blog_post_list.html'
     context_object_name = 'posts'
     ordering = ['-date_posted']
-    paginate_by = 4
+    paginate_by = 3
 
 
 # def post_detail(request, slug):

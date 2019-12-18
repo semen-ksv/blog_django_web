@@ -35,7 +35,10 @@ body:before {
         display: none;
     }
     .mainBorder {
-    padding: 50% 12%;
+        padding: 50% 12%;
+    }
+    .admin-panel-left {
+        visibility: visible;
     }
 }
 
@@ -282,9 +285,8 @@ a.badge-dark:focus, a.badge-dark:hover {
     z-index: 3;
     color: #048989;
     background-color: rgba(1,1,1,0);
-    border: 1px;
     border-radius: 5px;
-    border-color: #00A4B6;
+    /*border: 1px #00A4B6;*/
     font-weight: bold;
     font-size: 15px;
 }
@@ -325,11 +327,17 @@ a.badge-dark:focus, a.badge-dark:hover {
 .mainBorder {
     padding: 50% 20%;
     grid-area: aside;
+}
+
+.content-section{
+    display: block;
+    margin-top: 10%;
+    margin-bottom: 10%;
 
 }
 
 .nuvcover {
-    margin: 0;
+    margin: 0 0 50px;
     /*height: 100vh;*/
     /*display: flex;*/
     position: fixed;
@@ -337,6 +345,8 @@ a.badge-dark:focus, a.badge-dark:hover {
     justify-content: center;
     background: rgba(158, 20, 167, 0.11);
     border-radius: 10px;
+    display: block;
+
 
 }
 
@@ -389,6 +399,22 @@ a.badge-dark:focus, a.badge-dark:hover {
     transform: scale(7);
     border-radius: 50%;
 }
+
+.admin-panel-left{
+    visibility: hidden;
+    display: block;
+    padding: 5%;
+    margin-top: 10%;
+    position: fixed;
+    vertical-align: bottom
+}
+
+.admin-panel-left a{
+    display: block;
+    margin: 4%;
+    border-radius: 30%;
+}
+
 
 /* RIGHT panel*/
 .siteAds {

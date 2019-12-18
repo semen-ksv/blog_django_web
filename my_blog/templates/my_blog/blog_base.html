@@ -28,16 +28,30 @@
 {% endblock %}
 
 {% block left %}
-    <div class="nuvcover">
-        <nav>
-            <ul>
-                <li><a href="{% url 'index_page' %}" style=""><span>Home</span></a></li>
-                <li><a href="{%  url 'blog_home' %}"><span>Articles</span></a></li>
-                <li><a href="{% url 'tags_list' %}"><span>Tags</span></a></li>
-                <li><a href=""><span>Find</span></a></li>
+    <div class="content-section">
+        <div class="nuvcover">
+            <nav>
+                <ul>
+                    <li><a href="{% url 'index_page' %}" style=""><span>Home</span></a></li>
+                    <li><a href="{% url 'blog_home' %}"><span>Articles</span></a></li>
+                    <li><a href="{% url 'tags_list' %}"><span>Tags</span></a></li>
+                    <li><a href=""><span>Find</span></a></li>
 
-            </ul>
-        </nav>
+                </ul>
+            </nav>
+        </div>
+
+        <br>
+        {% if  user.is_authenticated %}
+            <div class="admin-panel-left">
+                <h5>Create panel</h5>
+                <a href="{% url 'post_create' %}" class="btn btn-outline-info">+Post</a>
+                <a href="{% url 'tag_create' %}" class="btn btn-outline-info">+Tag</a>
+                {% if user.is_staff %}
+                    <a href="/admin" class="btn btn-outline-info">Admin</a>
+                {% endif %}
+            </div>
+        {% endif %}
     </div>
 
 {% endblock %}
