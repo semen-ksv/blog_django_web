@@ -4,20 +4,49 @@
 {% block content %}
 
     <div class="register">
-
         <div class="content-section">
-      <div class="media">
-        <img class="rounded-circle account-img" src="{{ user.profile.image.url }} " width="">
-        <div class="media-body">
-          <h2 class="account-heading">{{ user.username }}</h2>
-          <p class="text-secondary">{{ user.email }}</p>
+            <div class="media">
+                <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" width="150px" height="150px">
+                <div class="media-body">
+                    <h2 class="account-heading">{{ user.username }}</h2>
+                    <p class="text">{{ user.email }}</p>
+                    <p class="text-dark">Joined: {{ user.date_joined }}</p>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
+{% endblock %}
 
+{% block right %}
+    <div class="right_panel">
+
+        <br>
+        {% if  user.is_authenticated %}
+            <div class="admin-panel">
+                <h5>Create panel</h5>
+                <a href="{% url 'post_create' %}" class="btn btn-outline-info">+Post</a>
+                <a href="{% url 'tag_create' %}" class="btn btn-outline-info">+Tag</a>
+                {% if user.is_staff %}
+                    <a href="/admin" class="btn btn-outline-info">Admin</a>
+                {% endif %}
+            </div>
+        {% endif %}
     </div>
+{% endblock %}
 
-
-
+{% block left %}
+    <div class="content-section">
+        <br>
+        {% if  user.is_authenticated %}
+            <div class="admin-panel-left">
+                <h5>Create panel</h5>
+                <a href="{% url 'post_create' %}" class="btn btn-outline-info">+Post</a>
+                <a href="{% url 'tag_create' %}" class="btn btn-outline-info">+Tag</a>
+                {% if user.is_staff %}
+                    <a href="/admin" class="btn btn-outline-info">Admin</a>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}
