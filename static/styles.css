@@ -37,7 +37,7 @@ body:before {
     .mainBorder {
         padding: 50% 12%;
     }
-    .admin-panel-left {
+    .content-section .admin-panel-left {
         visibility: visible;
     }
 }
@@ -325,15 +325,12 @@ a.badge-dark:focus, a.badge-dark:hover {
 }
 /* lEFT Navigation menu*/
 .mainBorder {
-    padding: 50% 20%;
+    padding: 60px 20% 200px 20%;
     grid-area: aside;
 }
 
 .content-section{
     display: block;
-    margin-top: 10%;
-    margin-bottom: 10%;
-
 }
 
 .nuvcover {
@@ -403,8 +400,8 @@ a.badge-dark:focus, a.badge-dark:hover {
 .admin-panel-left{
     visibility: hidden;
     display: block;
-    padding: 5%;
-    margin-top: 10%;
+
+    margin-top: 450px;
     position: fixed;
     vertical-align: bottom
 }
@@ -434,8 +431,8 @@ a.badge-dark:focus, a.badge-dark:hover {
 
 .admin-panel{
     display: block;
-    padding: 5%;
-    margin-top: 10%;
+    padding: 2%;
+    margin-top: 18%;
     position: fixed;
     vertical-align: bottom
 }
