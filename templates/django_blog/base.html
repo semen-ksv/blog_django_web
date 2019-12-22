@@ -53,10 +53,14 @@
 {#                  <input class="search-input" type="text" placeholder="Искать здесь...">#}
 {#                  <button class="search-button" type="submit"></button>#}
 {#                </form>#}
+                <form action="{% url 'search_home' %}">
                 <div class="kodasegun">
-                    <i class="fas fa-search"></i><input name="search" id="search-engine" type="search">
+                    <input name="search" id="search-engine" type="search">
+                    <button class="fas fa-search" type="submit" style="background: none; border: none">
 
-                </div>
+                    </button>
+
+                </div></form>
             </div>
 
             {% if  user.is_authenticated %}

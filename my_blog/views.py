@@ -5,6 +5,7 @@ from django.views.generic import View, ListView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 from .models import Post, Tag
 from .utilities import ObjectDetailMixin, ObjectCreateMixin, ObjectUpdateMixin, ObjectDeleteMixin
@@ -16,6 +17,14 @@ from .forms import TagForm, PostForm
 #     if request.method == 'GET':
 #         posts = Post.objects.all()
 #         return render(request, 'my_blog/blog_post_list.html', context={'posts': posts})
+def search(request):
+    search_query = request.GET.get('search', '')
+    if search_query:
+        posts = Post.objects.filter(Q(title__icontains=search_query) | Q(body__icontains=search_query))
+    else:
+        posts = Post.objects.all()
+    return render(request, 'my_blog/blog_post_list.html', context={'posts': posts})
+
 
 class PostsList(ListView):
     model = Post
@@ -23,6 +32,8 @@ class PostsList(ListView):
     context_object_name = 'posts'
     ordering = ['-date_posted']
     paginate_by = 3
+
+
 
 class AuthorPostsList(ListView):
     model = Post
