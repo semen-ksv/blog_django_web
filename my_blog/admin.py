@@ -2,4 +2,38 @@ from django.contrib import admin
 from .models import Tag, Post
 
 admin.site.register(Tag)
-admin.site.register(Post)
+
+# @admin.register(Post)
+# class InLineTag(admin.TabularInline):
+#     model = Tag
+#     extra = 1
+
+class PostAdmin(admin.ModelAdmin):
+    # fields = (
+    #     'title',
+    #     'author',
+    #     'slug',
+    #     'body',
+    #     'date_posted',
+    #     'tags',
+    # )
+    # inlines = [InLineTag]
+    list_display = ('title', 'author', 'date_posted',)
+    list_filter = ('title',)
+    search_fields = ('title', 'body',)
+    fieldsets = (
+        (None, {
+            'fields': (
+                'title',
+                'slug',
+                'author',
+                'body',
+                'date_posted',
+                'tags',
+            )
+            }),
+        )
+
+
+
+admin.site.register(Post, PostAdmin)
