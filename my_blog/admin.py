@@ -28,6 +28,7 @@ class PostAdmin(admin.ModelAdmin):
                 'slug',
                 'author',
                 'body',
+                'post_img',
                 'date_posted',
                 'tags',
             )

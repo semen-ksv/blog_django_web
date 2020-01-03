@@ -267,6 +267,7 @@ main a:hover {
     background: rgba(158, 20, 167, 0.11);
     padding: 2%;
     border-radius: 0 50px 0 50px;
+    overflow:hidden;
 }
 
 small.text-muted {
@@ -279,6 +280,9 @@ small.text-muted {
     padding-left: 0;
 }
 
+.article-content{
+    position:relative;
+}
 .article-title {
     font-size: 26px;
 
@@ -290,7 +294,6 @@ small.text-muted {
 
 .article-metadata{
     width: 95%;
-    white-space:nowrap;
 }
 
 .article-head{

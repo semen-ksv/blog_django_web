@@ -1,3 +1,4 @@
+from PIL import Image
 from django.db import models
 from django.http import request
 from django.utils import timezone
@@ -17,10 +18,12 @@ class Post(models.Model):
     slug = models.SlugField(max_length=150, blank=True, unique=True)
     body = models.TextField(blank=True, db_index=True)
     date_posted = models.DateField(default=timezone.now)
+    post_img = models.ImageField(null=True, blank=True, upload_to='post_images', verbose_name='image')
     # foreign keys
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     # relationships many to many
     tags = models.ManyToManyField('Tag', blank=True, related_name='posts')
+
 
     def __str__(self):
         return self.title
@@ -40,6 +43,33 @@ class Post(models.Model):
         # if not self.author:
         #     self.author = User.username
         super().save(*args, **kwargs)
+
+        img = Image.open(self.post_img.path)
+        if img.height > 300 or img.width > 300:
+            output_size = (300, 300)
+            img.thumbnail(output_size)
+            img.save(self.post_img.path)
+
+    @property
+    def get_comments(self):
+        return self.comments.all().order_by('-timestamp')
+
+    @property
+    def comment_count(self):
+        return Comment.objects.filter(post=self).count()
+
+
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_comment = models.DateTimeField(auto_now_add=True)
+    body = models.TextField()
+    post = models.ForeignKey(
+        'Post', related_name='comments', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
+
 
 
 class Tag(models.Model):
