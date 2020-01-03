@@ -484,7 +484,7 @@ a.badge-dark:focus, a.badge-dark:hover {
 .admin-panel{
     display: block;
     padding: 2%;
-    margin-top: 18%;
+    margin-top: 15%;
     position: fixed;
     vertical-align: bottom
 }

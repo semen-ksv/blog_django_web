@@ -18,7 +18,7 @@
             {% endif %}
             {{ post.body|truncatewords:50 }}
         </div>
-        <div class="comments"><i class="icon-comment"></i>{{ obj.comment_count }}</div>
+            <div style="color: wheat; float: right;">post have {{ post.comment_count }} comments</div>
         <div style="clear:both;">
             {% for tag in post.tags.all %}
             <a href="{% url 'tags_list' %}" class="badge badge-pill badge-dark">{{ tag }}</a>

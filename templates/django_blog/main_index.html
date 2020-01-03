@@ -19,3 +19,15 @@
     My initial page
 {% endblock %}
 
+{% block right %}
+
+        <br>
+        {% if  user.is_authenticated %}
+            <div class="admin-panel">
+                {% if user.is_staff %}
+                    <a href="/admin" class="btn btn-outline-info">Admin</a>
+                {% endif %}
+            </div>
+        {% endif %}
+{% endblock %}
+
