@@ -9,7 +9,7 @@ from django.db.models import Q
 
 from .models import Post, Tag
 from .utilities import ObjectDetailMixin, ObjectCreateMixin, ObjectUpdateMixin, ObjectDeleteMixin
-from .forms import TagForm, PostForm
+from .forms import TagForm, PostForm, CommentForm
 
 
 # def blog_posts_list(request):
@@ -170,3 +170,15 @@ class TagsList(ListView):
     template_name = 'my_blog/tag_list.html'
     context_object_name = 'tags'
     ordering = ['tag']
+
+class AddComment(LoginRequiredMixin, View):
+    raise_exception = True
+
+    def post(self, request, pk):
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.post_id = pk
+            form.user = request.user
+            form.save()
+        return redirect('/')

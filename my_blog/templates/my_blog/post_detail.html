@@ -20,9 +20,10 @@
 
             <div class="article-content">
                 {% if post.post_img %}
-                    <img src="{{ post.post_img.url }}" style="float:left; margin: 0 7px 7px 0; max-height:100%!important;">
+                    <img src="{{ post.post_img.url }}"
+                         style="float:left; margin: 0 7px 7px 0; max-height:100%!important;">
                 {% endif %}
-                {{ post.body}}
+                {{ post.body }}
             </div>
             <div style="color: wheat; float: right;">post have {{ post.comment_count }} comments</div>
             <div style="clear:both;">
@@ -48,6 +49,34 @@
         </div>
 
     {% endif %}
+    <p><h4>Liv your comment</h4></p>
+    <form action="{% url 'post_comment' post.id %}" method="post">
+        {% csrf_token %}
 
+{#        {% for field in form %}#}
+{#            <div class="form-group">#}
+{#                {% if field.errors %}#}
+{#                    <div class="alert alert-danger" role="alert">#}
+{#                        {{ field.errors }}#}
+{#                    </div>#}
+{#                {% endif %}#}
+{##}
+{#                {{ field.label }}#}
+{#                {{ field }}#}
+{#            </div>#}
+{#        {% endfor %}#}
+
+                    <div>
+
+                        <textarea name="body" id="contactcomment" cols="100" rows="5">
+
+                        </textarea>
+            </div>
+
+
+        <button type="submit" class="btn btn-outline-info" style="">
+            Add Comment
+        </button>
+    </form>
 
 {% endblock %}

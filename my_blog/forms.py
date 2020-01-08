@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 # использовать данные только с словаря clean_data
-from .models import Tag, Post
+from .models import Tag, Post, Comment
 
 
 class TagForm(forms.ModelForm):
@@ -62,3 +62,9 @@ class PostForm(forms.ModelForm):
         if Post.objects.filter(slug__iexact=new_slug).count():
             raise ValidationError(f'Slug {new_slug} is already exists!')
         return new_slug
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['body']
