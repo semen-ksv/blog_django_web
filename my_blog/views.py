@@ -176,9 +176,10 @@ class AddComment(LoginRequiredMixin, View):
 
     def post(self, request, pk):
         form = CommentForm(request.POST)
+        post = Post.objects.get(id=pk)
         if form.is_valid():
             form = form.save(commit=False)
-            form.post_id = pk
+            form.post = post
             form.user = request.user
             form.save()
-        return redirect('/')
+        return redirect(post.get_absolute_url())

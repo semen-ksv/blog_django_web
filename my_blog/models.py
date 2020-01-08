@@ -52,7 +52,7 @@ class Post(models.Model):
 
     @property
     def get_comments(self):
-        return self.comments.all().order_by('-timestamp')
+        return self.comments.all().order_by('-date_comment')
 
     @property
     def comment_count(self):
@@ -62,13 +62,13 @@ class Post(models.Model):
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    date_comment = models.DateTimeField(auto_now_add=True)
+    date_comment = models.DateField(default=timezone.now)
     body = models.TextField()
     post = models.ForeignKey(
         'Post', related_name='comments', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.user.username
+        return f'{self.id} {self.user.username}'
 
 
 

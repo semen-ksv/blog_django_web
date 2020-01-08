@@ -263,10 +263,23 @@ main a:hover {
     width: 100%;
 }
 
+.media-body-comment {
+    justify-content: space-between;
+    padding: 1%;
+    width: 80%;
+}
+
 .media-article {
     background: rgba(158, 20, 167, 0.11);
     padding: 2%;
     border-radius: 0 50px 0 50px;
+    overflow:hidden;
+}
+
+.media-comment {
+    background: rgba(194, 24, 203, 0.12);
+    padding: 10px 20px;
+    border-radius: 30px;
     overflow:hidden;
 }
 
@@ -374,6 +387,12 @@ a.badge-dark:focus, a.badge-dark:hover {
     padding: 10px;
     width: 100%;
     height: 100%;
+}
+
+.post_comment{
+    padding: 10px;
+    width: 80%;
+    height: 80%;
 }
 /* lEFT Navigation menu*/
 .mainBorder {
