@@ -359,7 +359,7 @@ a.badge-dark:focus, a.badge-dark:hover {
 .page-link:hover {
     color: #451a24;
     text-decoration: none;
-    background-color: #66f3ff;
+    background-color: rgba(102, 243, 255, 0.29);
     border-radius: 10px;
     z-index: 3;
 
