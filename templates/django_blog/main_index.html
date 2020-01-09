@@ -7,11 +7,12 @@
 {% block message %}
     {% if messages %}
         {% for massage in messages %}
-            <div class="alert alert-{{ message.tags }}" role="alert">
+            <div class="alert alert-success" role="alert">
                 {{ massage }}
             </div>
         {% endfor %}
     {% endif %}
+
 {% endblock %}
 
 
