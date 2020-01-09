@@ -49,23 +49,28 @@
         </div>
 
     {% endif %}
-    <div class="post_comment" >
-    <p><h4>Live your comment</h4></p>
-    <form action="{% url 'post_comment' post.id %}" method="post">
-        {% csrf_token %}
+    <div class="post_comment">
+        <p><h4>Live your comment</h4></p>
+        <form action="{% url 'post_comment' post.id %}" method="post">
+            {% csrf_token %}
 
             <div class="form-group">
-            <textarea name="body" id="contactcomment" cols="80" rows="4" style="background-color: #f1ffff">
+            <textarea id="comment_text" name="body" cols="70" rows="4" placeholder="Write comment">
             </textarea>
 
 
-            <div style="padding: 0 0 0 60%;">
-                <button type="submit" class="btn btn-outline-info" style="">
-                    Add Comment
-                </button>
+                <div style="padding: 0 0 0 60%;">
+                    {% if user.is_authenticated %}
+                        <button type="submit" class="btn btn-outline-info" style="">
+                            Add Comment
+                        </button>
+                        {% else %}
+                        <a class="ml-2" href="{% url 'login'  %}"><strong style="color: #055865;">Log In to live a comment</strong></a>
+                    {% endif %}
+
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
     </div>
     {% for comment in post.get_comments %}
         <div class="media-body-comment">

@@ -394,6 +394,25 @@ a.badge-dark:focus, a.badge-dark:hover {
     width: 80%;
     height: 80%;
 }
+
+#comment_text {
+	overflow:hidden;
+	background-color:#FFF;
+	color:#222;
+	font-weight:normal;
+	font-size:16px;
+	resize:none;
+	line-height:40px;
+	padding-left:100px;
+	padding-right:20px;
+	padding-top:9px;
+	padding-bottom:34px;
+	background-image:url(https://static.tumblr.com/maopbtg/E9Bmgtoht/lines.png), url(https://static.tumblr.com/maopbtg/nBUmgtogx/paper.png);
+	background-repeat:repeat-y, repeat;
+	border-radius:12px;
+	border-top:1px solid #FFF;
+	border-bottom:1px solid #FFF;
+}
 /* lEFT Navigation menu*/
 .mainBorder {
     padding: 60px 20% 200px 20%;
