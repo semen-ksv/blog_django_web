@@ -17,6 +17,7 @@ class ObjectDetailMixin:
 
 
 class ObjectCreateMixin:
+    """Common for Post and Tag creations staff"""
     form_model = None
     template = None
     model = None

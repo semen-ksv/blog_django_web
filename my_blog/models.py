@@ -14,6 +14,7 @@ def generate_slug(title):
 
 
 class Post(models.Model):
+    """Model for posts in bloge"""
     title = models.CharField(max_length=150, db_index=True)
     slug = models.SlugField(max_length=150, blank=True, unique=True)
     body = models.TextField(blank=True, db_index=True)
@@ -29,7 +30,7 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        """generate unike url path for post"""
+        """generate unique url path for post"""
         return reverse('post_detail', kwargs={'slug': self.slug})
 
     def get_update_url(self):
@@ -52,10 +53,12 @@ class Post(models.Model):
 
     @property
     def get_comments(self):
+        """ get comments from Comment model fof Post"""
         return self.comments.all().order_by('-date_comment')
 
     @property
     def comment_count(self):
+        """count all comments for self Post"""
         return Comment.objects.filter(post=self).count()
 
 
@@ -73,6 +76,7 @@ class Comment(models.Model):
 
 
 class Tag(models.Model):
+    """Model for Tags"""
     tag = models.CharField(max_length=50, unique=True)
     slug = models.SlugField(max_length=50, unique=True)
 
@@ -84,5 +88,5 @@ class Tag(models.Model):
         return reverse('tag_update', kwargs={'slug': self.slug})
 
     def get_absolute_url(self):
-        """generate unike url path for tags"""
+        """generate unique url path for tags"""
         return reverse('tag_detail', kwargs={'slug': self.slug})

@@ -6,7 +6,7 @@ from .models import Profile
 
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
-    """create instance user and sand signal"""
+    """create instance user and send signal"""
     if created:
         Profile.objects.create(user=instance)\
 

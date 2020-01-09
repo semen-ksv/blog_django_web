@@ -27,6 +27,7 @@ def search(request):
 
 
 class PostsList(ListView):
+    """Show all post on Article page"""
     model = Post
     template_name = 'my_blog/blog_post_list.html'
     context_object_name = 'posts'
@@ -172,6 +173,7 @@ class TagsList(ListView):
     ordering = ['tag']
 
 class AddComment(LoginRequiredMixin, View):
+    """Add new comments for post"""
     raise_exception = True
 
     def post(self, request, pk):
