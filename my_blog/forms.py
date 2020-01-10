@@ -40,6 +40,8 @@ class TagForm(forms.ModelForm):
 
 
 class PostForm(forms.ModelForm):
+    post_img = forms.ImageField(label='Select a file', help_text='Jpg, jpeg only')
+
     class Meta:
         model = Post
         fields = ['title', 'body', 'post_img', 'tags']

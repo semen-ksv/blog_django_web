@@ -14,17 +14,16 @@ def generate_slug(title):
 
 
 class Post(models.Model):
-    """Model for posts in bloge"""
+    """Model for posts in blog"""
     title = models.CharField(max_length=150, db_index=True)
     slug = models.SlugField(max_length=150, blank=True, unique=True)
     body = models.TextField(blank=True, db_index=True)
     date_posted = models.DateField(default=timezone.now)
-    post_img = models.ImageField(null=True, blank=True, upload_to='post_images', verbose_name='image')
+    post_img = models.ImageField(null=True, blank=True, upload_to='post_images/', verbose_name='image')
     # foreign keys
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     # relationships many to many
     tags = models.ManyToManyField('Tag', blank=True, related_name='posts')
-
 
     def __str__(self):
         return self.title
@@ -62,7 +61,6 @@ class Post(models.Model):
         return Comment.objects.filter(post=self).count()
 
 
-
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date_comment = models.DateField(default=timezone.now)
@@ -72,7 +70,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'{self.id} {self.user.username}'
-
 
 
 class Tag(models.Model):

@@ -16,7 +16,7 @@
             {% if post.post_img %}
                 <img src="{{ post.post_img.url }}" style="float:left; margin: 0 7px 7px 0; max-height:100%!important;">
             {% endif %}
-            {{ post.body|truncatewords:50 }}
+            {{ post.body|truncatewords:80 }}
         </div>
         <div style="color: #f5efaf; float: right; font-size: 12px">post have {{ post.comment_count }}
             {% if post.comment_count < 1 %}

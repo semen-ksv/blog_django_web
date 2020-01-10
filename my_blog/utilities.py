@@ -29,7 +29,7 @@ class ObjectCreateMixin:
 
     def post(self, request):
         """read data from forms"""
-        bound_form = self.form_model(request.POST)
+        bound_form = self.form_model(request.POST, request.FILES)
 
         if bound_form.is_valid():
             new_obj = bound_form.save(commit=False)
