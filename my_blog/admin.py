@@ -1,6 +1,8 @@
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-
+from django import forms
+from ckeditor.widgets import CKEditorWidget
 from .models import Tag, Post, Comment
 
 admin.site.register(Tag)
@@ -11,7 +13,14 @@ admin.site.register(Comment)
 #     model = Tag
 #     extra = 1
 
+class PostAdminForm(forms.ModelForm):
+    body = forms.CharField(widget=CKEditorUploadingWidget())
+    class Meta:
+        model = Post
+        fields = '__all__'
+
 class PostAdmin(admin.ModelAdmin):
+    form = PostAdminForm
     # fields = (
     #     'title',
     #     'author',
