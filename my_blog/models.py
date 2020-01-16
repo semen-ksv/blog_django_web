@@ -1,4 +1,6 @@
 from PIL import Image
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.http import request
 from django.utils import timezone
@@ -17,7 +19,7 @@ class Post(models.Model):
     """Model for posts in blog"""
     title = models.CharField(max_length=150, db_index=True)
     slug = models.SlugField(max_length=150, blank=True, unique=True)
-    body = models.TextField(blank=True, db_index=True)
+    body = RichTextUploadingField(blank=True, db_index=True)
     date_posted = models.DateField(default=timezone.now)
     post_img = models.ImageField(null=True, blank=True, upload_to='post_images/', verbose_name='image')
     # foreign keys

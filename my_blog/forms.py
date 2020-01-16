@@ -1,3 +1,4 @@
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django import forms
 from django.core.exceptions import ValidationError
 # использовать данные только с словаря clean_data
@@ -41,7 +42,7 @@ class TagForm(forms.ModelForm):
 
 class PostForm(forms.ModelForm):
     post_img = forms.ImageField(label='Select a file', help_text='Jpg, jpeg only')
-
+    body = forms.CharField(widget=CKEditorUploadingWidget())
     class Meta:
         model = Post
         fields = ['title', 'body', 'post_img', 'tags']
@@ -49,7 +50,7 @@ class PostForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             # 'slug': forms.TextInput(attrs={'class': 'form-control'}),
-            'body': forms.Textarea(attrs={'class': 'form-control'}),
+
             # 'author': forms.SelectMultiple(attrs={'class': 'form-control'}),
 
             'tags': forms.SelectMultiple(attrs={'class': 'form-control'}),

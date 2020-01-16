@@ -1,4 +1,5 @@
 {% extends 'my_blog/blog_base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}
     Post Create
@@ -13,20 +14,25 @@
     <form action="{% url 'post_create' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
-        {% for field in form %}
-            <div class="form-group">
-                {% if field.errors %}
-                    <div class="alert alert-danger" role="alert">
-                        {{ field.errors }}
-                    </div>
-                {% endif %}
+{#        {% for field in form %}#}
+{#            <div class="form-group">#}
+{#                {% if field.errors %}#}
+{#                    <div class="alert alert-danger" role="alert">#}
+{#                        {{ field.errors }}#}
+{#                    </div>#}
+{#                {% endif %}#}
+{##}
+{#                {{ field.label }}#}
+{#                {% if field == 'body' %}#}
+{#                     {{ field.media }}#}
+{#                {% endif %}#}
+{#                    {{ field}}#}
+{##}
+{#            </div>#}
+{#        {% endfor %}#}
 
-{#                <div class="form-group">#}
-                    {{ field.label }}
-                    {{ field }}
-{#                </div>#}
-            </div>
-        {% endfor %}
+        {{ form|crispy }}
+        {{ form.media }}
 
 
         <button type="submit" class="btn btn-outline-info" style="">
