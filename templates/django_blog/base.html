@@ -125,11 +125,26 @@
                     <div class="col-md-10">
                         <div class="menu">
                             <ul>
-                                <li class="active"><a href="#">Home</a></li>
-                                <li><a href="#">lifestyle</a></li>
+                                <li class="active"><a href="{% url 'blog_home' %}">Home</a></li>
                                 <li><a href="#">Food</a></li>
-                                <li><a href="#">Nature</a></li>
+
                                 <li><a href="#">photography</a></li>
+
+                                {% if  user.is_authenticated %}
+
+                <li><a href="{% url 'post_create' %}">New post</a></li>
+                <li><a href="{% url 'logout' %}">logout</a></li>
+                <li><a href="{% url 'profile' %}">Hello: {{ user.username }}
+                    <img alt="" src="{{ user.profile.image.url }}" width="30px" height="30px">
+                </a></li>
+
+
+            {% else %}
+                <li><a href="{% url 'login' %}">login</a></li>
+
+            {% endif %}
+
+
                             </ul>
                         </div>
                     </div>
@@ -138,9 +153,15 @@
         </header>
 
 
-        {% block message %}
-        {% endblock %}
-    
+
+    {% if messages %}
+        {% for massage in messages %}
+            <div class="alert alert-success" role="alert">
+                {{ massage }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
     {% block image_section %}
     
     {% endblock %}

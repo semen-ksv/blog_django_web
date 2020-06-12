@@ -1,15 +1,7 @@
 {% extends 'django_blog/base.html' %}
 {% load crispy_forms_tags %}
 
-{% block message %}
-    {% if messages %}
-        {% for massage in messages %}
-            <div class="alert alert-success" role="alert">
-                {{ massage }}
-            </div>
-        {% endfor %}
-    {% endif %}
-{% endblock %}
+
 
 {% block content %}
 

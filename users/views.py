@@ -1,8 +1,10 @@
+from django.contrib.auth import login
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, UserLoginForm
+
 
 def register(request):
     if request.method == 'POST':
@@ -39,3 +41,14 @@ def profile(request):
         'profile_form': profile_form
     }
     return render(request, 'user/profile.html', context)
+
+def user_login(request):
+    if request.method == 'POST':
+        form = UserLoginForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('blog_home')
+    else:
+        form = UserLoginForm()
+    return render(request, 'user/login.html', {'form': form})
