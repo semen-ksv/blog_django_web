@@ -12,9 +12,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('profile/', include('users.urls')),
-    path('blog/', include('my_blog.urls')),
+    path('', include('my_blog.urls')),
     path('about/', views.about),
-    path('', views.main_index, name='index_page'),
+    # path('', views.main_index, name='index_page'),
 ]
 
 # Start Debug toolbar/ use only Debug = True

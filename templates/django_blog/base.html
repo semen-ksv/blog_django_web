@@ -1,51 +1,51 @@
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>
-        {% block title %}
-            Base
-        {% endblock %}
-    </title>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'styles.css' %}" />
-
-</head>
-<body>
-<header class="pageHeader">
-    <div class="Navbar">
-        <div style="margin-right: 15px">
-            <a href="{% url 'index_page' %}">
-               <img class="logo" src="{% static 'images/Logo_blog.png' %}" alt="BLOG" >
-            </a>
-        </div>
-        <div class="Navbar__Link Navbar__Link-toggle">
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">#}
+{#    <title>#}
+{#        {% block title %}#}
+{#            Base#}
+{#        {% endblock %}#}
+{#    </title>#}
+{##}
+{#    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">#}
+{#    <link rel="stylesheet" href="{% static 'styles.css' %}" />#}
+{##}
+{#</head>#}
+{#<body>#}
+{#<header class="pageHeader">#}
+{#    <div class="Navbar">#}
+{#        <div style="margin-right: 15px">#}
+{#            <a href="{% url 'index_page' %}">#}
+{#               <img class="logo" src="{% static 'images/Logo_blog.png' %}" alt="BLOG" >#}
+{#            </a>#}
+{#        </div>#}
+{#        <div class="Navbar__Link Navbar__Link-toggle">#}
 {#                        <i class="fas fa-bars"></i>#}
-            <div class="nav_button">
-                <div class="button_row"></div>
-                <div class="button_row"></div>
-                <div class="button_row"></div>
-            </div>
-
-
-        </div>
-        <nav class="Navbar__Items">
-            <div class="Navbar__Link">
-                <a class="Navbar__Link" href="{% url 'blog_home' %}">Articles</a>
-            </div>
+{#            <div class="nav_button">#}
+{#                <div class="button_row"></div>#}
+{#                <div class="button_row"></div>#}
+{#                <div class="button_row"></div>#}
+{#            </div>#}
+{##}
+{##}
+{#        </div>#}
+{#        <nav class="Navbar__Items">#}
+{#            <div class="Navbar__Link">#}
+{#                <a class="Navbar__Link" href="{% url 'blog_home' %}">Articles</a>#}
+{#            </div>#}
 {#            <div class="Navbar__Link">#}
 {#                <a class="Navbar__Link" href="">Project</a>#}
 {#            </div>#}
-            <div class="Navbar__Link">
-                <a class="Navbar__Link" href="/about">About me</a>
-            </div>
-        </nav>
-        <nav class="Navbar__Items Navbar__Items--right">
-            <div class="Navbar__Link">
+{#            <div class="Navbar__Link">#}
+{#                <a class="Navbar__Link" href="/about">About me</a>#}
+{#            </div>#}
+{#        </nav>#}
+{#        <nav class="Navbar__Items Navbar__Items--right">#}
+{#            <div class="Navbar__Link">#}
 {#                <a class="Navbar__Link" href="">#}
 {#                    <i class="fas fa-search"></i>#}
 {#                    find#}
@@ -54,109 +54,174 @@
 {#                  <input class="search-input" type="text" placeholder="Искать здесь...">#}
 {#                  <button class="search-button" type="submit"></button>#}
 {#                </form>#}
-                <form action="{% url 'search_home' %}">
-                <div class="kodasegun">
-                    <input name="search" id="search-engine" type="search">
-                    <button class="fas fa-search" type="submit" style="background: none; border: none">
-
-                    </button>
-
-                </div></form>
-            </div>
-
-            {% if  user.is_authenticated %}
-
-                <div class="Navbar__Link">
-                <a class="Navbar__Link" href="{% url 'logout' %}">
-                    <i class="fas fa-user-secret"></i>
-                    logout <a href="{% url 'profile' %}" style="color: #70180d; font-weight: bold; text-transform: capitalize">{{ user.username }}</a>
-                </a>
-                </div>
-
+{#                <form action="{% url 'search_home' %}">#}
+{#                <div class="kodasegun">#}
+{#                    <input name="search" id="search-engine" type="search">#}
+{#                    <button class="fas fa-search" type="submit" style="background: none; border: none">#}
+{##}
+{#                    </button>#}
+{##}
+{#                </div></form>#}
+{#            </div>#}
+{##}
+{#            {% if  user.is_authenticated %}#}
+{##}
+{#                <div class="Navbar__Link">#}
+{#                <a class="Navbar__Link" href="{% url 'logout' %}">#}
+{#                    <i class="fas fa-user-secret"></i>#}
+{#                    logout <a href="{% url 'profile' %}" style="color: #70180d; font-weight: bold; text-transform: capitalize">{{ user.username }}</a>#}
+{#                </a>#}
+{#                </div>#}
+{##}
 {#                <div class="Navbar__Link">#}
 {#                <a class="Navbar__Link" href="{% url 'post_create' %}">#}
 {#                    <i class="fas fa-plus"></i>#}
 {#                    New post#}
 {#                </a>#}
 {#                </div>#}
+{##}
+{#            {% else %}#}
+{##}
+{#                <div class="Navbar__Link">#}
+{#                <a class="Navbar__Link" href="{% url 'login' %}">#}
+{#                    <i class="fas fa-user-check"></i>#}
+{#                    login#}
+{#                </a>#}
+{#                </div>#}
+{##}
+{#            {% endif %}#}
+{##}
+{#        </nav>#}
+{#    </div>#}
+{#</header>#}
+<!DOCTYPE html>
+<html lang="en">
 
-            {% else %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Front page</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'responsive.css' %}">
+</head>
 
-                <div class="Navbar__Link">
-                <a class="Navbar__Link" href="{% url 'login' %}">
-                    <i class="fas fa-user-check"></i>
-                    login
-                </a>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="logo">
+                            <h2><a href="#">Classic</a></h2>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="menu">
+                            <ul>
+                                <li class="active"><a href="#">Home</a></li>
+                                <li><a href="#">lifestyle</a></li>
+                                <li><a href="#">Food</a></li>
+                                <li><a href="#">Nature</a></li>
+                                <li><a href="#">photography</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-
-            {% endif %}
-
-        </nav>
-    </div>
-</header>
+            </div>
+        </header>
 
 
-<main class="mainArticle container">
-
-    <div class="main_content">
         {% block message %}
         {% endblock %}
+    
+    {% block image_section %}
+    
+    {% endblock %}
 
         {% block content %}
             Some content
         {% endblock %}
+
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="footer-bg">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="footer-menu">
+                                        <ul>
+                                            <li class="active"><a href="#">Home</a></li>
+                                            <li><a href="#">lifestyle</a></li>
+                                            <li><a href="#">Food</a></li>
+                                            <li><a href="#">Nature</a></li>
+                                            <li><a href="#">photography</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="footer-icon">
+                                        <p><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></p>
+                                    </div>
+                                </div>
+                            </div> .
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
-
-
-</main>
-
-<aside class="mainBorder">
-    {% block left %}
-       left nav
-    {% endblock %}
-</aside>
-
-<div class="siteAds">
-    {% block right %}
-        right nav
-    {% endblock %}
-</div>
-
-
-<footer class="pageFooter special-color-dark" >
-     <!-- Footer Elements -->
-  <div class="container">
-
-    <!-- Social buttons -->
-    <ul class="list-unstyled text-center">
-      <li class="list-inline-item">
-        <a class="btn-floating btn-fb mx-1" href="https://www.facebook.com/ksvsem">
-          <i class="fab fa-facebook-f"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a class="btn-floating btn-li mx-1" href="">
-          <i class="fab fa-linkedin-in"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a class="btn-floating btn-github" href="https://github.com/semen-ksv">
-          <i class="fab fa-github"> </i>
-        </a>
-      </li>
-    </ul>
-    <!-- Social buttons -->
-  </div>
-
-  <div class="footer-copyright text-center">
-      © 2019 Django project
-  </div>
-
-</footer>
-    <script src="https://kit.fontawesome.com/bc6eae3a28.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="{% static 'javascript.js' %}"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/active.js"></script>
 </body>
-</html>
+
+
+
+
+{#<footer class="pageFooter special-color-dark" >#}
+{#     <!-- Footer Elements -->#}
+{#  <div class="container">#}
+{##}
+{#    <!-- Social buttons -->#}
+{#    <ul class="list-unstyled text-center">#}
+{#      <li class="list-inline-item">#}
+{#        <a class="btn-floating btn-fb mx-1" href="https://www.facebook.com/ksvsem">#}
+{#          <i class="fab fa-facebook-f"> </i>#}
+{#        </a>#}
+{#      </li>#}
+{#      <li class="list-inline-item">#}
+{#        <a class="btn-floating btn-li mx-1" href="">#}
+{#          <i class="fab fa-linkedin-in"> </i>#}
+{#        </a>#}
+{#      </li>#}
+{#      <li class="list-inline-item">#}
+{#        <a class="btn-floating btn-github" href="https://github.com/semen-ksv">#}
+{#          <i class="fab fa-github"> </i>#}
+{#        </a>#}
+{#      </li>#}
+{#    </ul>#}
+{#    <!-- Social buttons -->#}
+{#  </div>#}
+{##}
+{#  <div class="footer-copyright text-center">#}
+{#      © 2019 Django project#}
+{#  </div>#}
+{##}
+{#</footer>#}
+{#    <script src="https://kit.fontawesome.com/bc6eae3a28.js" crossorigin="anonymous"></script>#}
+{#    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>#}
+{#    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>#}
+{#    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>#}
+{#    <script src="{% static 'javascript.js' %}"></script>#}
+{#</body>#}
+{#</html>#}

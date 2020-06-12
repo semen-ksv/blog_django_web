@@ -1,57 +1,16 @@
 {% extends 'django_blog/base.html' %}
 
-{% block right %}
-    <div class="right_panel">
-        <div class="content-section">
-            <h5 style="color: #4f4f4f">Most interesting post</h5>
-
-            <ul class="list-group">
-                <li class="list-group-item list-group-item-light">Latest Posts</li>
-                <li class="list-group-item list-group-item-light">Announcements</li>
-                <li class="list-group-item list-group-item-light">Calendars</li>
-
-            </ul>
-
-        </div>
-        <br>
-        {% if  user.is_authenticated %}
-            <div class="admin-panel">
-                <h5>Create panel</h5>
-                <a href="{% url 'post_create' %}" class="btn btn-outline-info">+Post</a>
-                <a href="{% url 'tag_create' %}" class="btn btn-outline-info">+Tag</a>
-                {% if user.is_staff %}
-                    <a href="/admin" class="btn btn-outline-info">Admin</a>
-                {% endif %}
+    {% block image_section %}
+         <section class="bg-text-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="bg-text">
+                            <h3>Classic BLOG Design</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        {% endif %}
-    </div>
-{% endblock %}
-
-{% block left %}
-    <div class="content-section">
-        <div class="nuvcover">
-            <nav>
-                <ul>
-                    <li><a href="{% url 'index_page' %}" style=""><span>Home</span></a></li>
-                    <li><a href="{% url 'blog_home' %}"><span>Articles</span></a></li>
-                    <li><a href="{% url 'tags_list' %}"><span>Tags</span></a></li>
-                    <li><a href="{% url 'search_home' %}"><span>All</span></a></li>
-
-                </ul>
-            </nav>
-        </div>
-
-        <br>
-        {% if  user.is_authenticated %}
-            <div class="admin-panel-left">
-                <h5>Create panel</h5>
-                <a href="{% url 'post_create' %}" class="btn btn-outline-info">+Post</a>
-                <a href="{% url 'tag_create' %}" class="btn btn-outline-info">+Tag</a>
-                {% if user.is_staff %}
-                    <a href="/admin" class="btn btn-outline-info">Admin</a>
-                {% endif %}
-            </div>
-        {% endif %}
-    </div>
-
-{% endblock %}
+        </section>
+    {% endblock %}
