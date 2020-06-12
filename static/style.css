@@ -139,7 +139,7 @@ section.blog-post-area .big-text h3 {
 section.blog-post-area .big-text h3 a {
     font-family: Geometria;
     font-weight: 700;
-    font-size: 40px;
+    font-size: 30px;
     color: #061e37;
     text-decoration: none;
 }
@@ -193,7 +193,7 @@ section.blog-post-area h4 span.author-name {
 
 .blog-post-area .single-post h3 a {
     font-family: Geometria;
-    font-size: 28px;
+    font-size: 18px;
     font-weight: 700;
     text-decoration: none;
     color: #061e37;
@@ -522,7 +522,6 @@ section.blog-post-area h4 span.author-name {
 }
 
 
-}
 .single-blog-area .commententries .author-name h5 a {
     font-family: Geometria;
     font-size: 21px;

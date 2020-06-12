@@ -21,7 +21,7 @@
                                 {% endif %}
 
                             <div class="big-text">
-                                <h3><a href="#">{{ posts.first.title }}</a></h3>
+                                <h3><a href="{{ posts.first.get_absolute_url }}">{{ posts.first.title }}</a></h3>
                                 <p> {{ posts.first.body|safe|truncatewords:70 }} </p>
 
                                 <h4><span class="date">{{ posts.first.date_posted }}</span><span class="author">Posted By: <span

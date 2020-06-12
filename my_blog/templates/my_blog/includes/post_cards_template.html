@@ -40,11 +40,18 @@
             <img src="{{ post.post_img.url }}" alt="" style="float:left; margin: 0 7px 7px 0; max-height:100%!important;">
         {% endif %}
 
-        <h3><a href="#">{{ post.title }}</a></h3>
+        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
         <h4><span>Posted By: <span class="author-name">{{ post.author }}</span></span>
         </h4>
         <p> {{ post.body|safe|truncatewords:50 }}</p>
         <h4><span>{{ post.date_posted }}</span></h4>
+     <div style="color: #575205; float: right; font-size: 12px">post have {{ post.comment_count }}
+            {% if post.comment_count < 1 %}
+                comment
+            {% else %}
+                comments
+            {% endif %}
+        </div>
     </div>
 </div>
 
