@@ -1,5 +1,6 @@
 {% extends 'my_blog/blog_base.html' %}
 
+
 {% block title %}
     Posts
 {% endblock %}
@@ -7,11 +8,36 @@
 
 {% block content %}
     <section class="blog-post-area">
-        {% for post in posts %}
-            {% include 'my_blog/includes/post_cards_template.html' %}
+        <div class="container">
+            <div class="row">
+                <div class="blog-post-area-style">
+                    <div class="col-md-12">
+                        <div class="single-post-big">
+                            {% if posts.first.post_img %}
+                                <div class="big-image">
 
-        {% endfor %}
+                                    <img src="{{ posts.first.post_img.url }}" alt="">
+                                </div>
+                                {% endif %}
 
+                            <div class="big-text">
+                                <h3><a href="#">{{ posts.first.title }}</a></h3>
+                                <p> {{ posts.first.body|safe|truncatewords:70 }} </p>
+
+                                <h4><span class="date">{{ posts.first.date_posted }}</span><span class="author">Posted By: <span
+                                        class="author-name">{{ posts.first.author }}</span></span>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% for post in posts %}
+                        {% include 'my_blog/includes/post_cards_template.html' %}
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
         {% if is_paginated %}
             <div class="pegination">
                 <div class="nav-links">
