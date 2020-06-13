@@ -13,18 +13,20 @@
                 <div class="blog-post-area-style">
                     <div class="col-md-12">
                         <div class="single-post-big">
-                            {% if posts.first.post_img %}
-                                <div class="big-image">
-
+                            <div class="big-image">
+                                {% if posts.first.post_img %}
                                     <img src="{{ posts.first.post_img.url }}" alt="">
-                                </div>
+                                {% else %}
+                                    <img src="/media/Article.jpg" alt="" style="float:left; margin: 0 7px 7px 0; max-height:100%!important;">
                                 {% endif %}
+                            </div>
 
                             <div class="big-text">
                                 <h3><a href="{{ posts.first.get_absolute_url }}">{{ posts.first.title }}</a></h3>
                                 <p> {{ posts.first.body|safe|truncatewords:70 }} </p>
 
-                                <h4><span class="date">{{ posts.first.date_posted }}</span><span class="author">Posted By: <span
+                                <h4><span class="date">{{ posts.first.date_posted|date:'d.m.Y' }}</span><span
+                                        class="author">Posted By: <span
                                         class="author-name">{{ posts.first.author }}</span></span>
                                 </h4>
                             </div>
