@@ -621,7 +621,7 @@ section.blog-post-area h4 span.author-name {
     width: 95%;
 }
 .single-blog-area form .comment {
-    margin-right: 150px;
+    margin-right: 200px;
 }
 .single-blog-area form .post {
     bottom: 0;
@@ -785,6 +785,6 @@ section.blog-post-area h4 span.author-name {
 
 .post_comment {
     padding: 10px;
-    width: 80%;
+    width: 90%;
     height: 80%;
 }

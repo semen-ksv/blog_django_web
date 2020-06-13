@@ -113,6 +113,7 @@ class TagDetail(ObjectDetailMixin, View):
     #     return render(request, 'my_blog/tag_detail.html', context={'tag': tag})
     model = Tag
     template = 'my_blog/tag_detail.html'
+    context_object_name = 'tags'
 
 
 class TagCreate(LoginRequiredMixin, ObjectCreateMixin, View):
