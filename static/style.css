@@ -28,6 +28,14 @@
     font-weight: 500;
 }
 
+.wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.container{
+    flex-grow: 1;
+}
 .wrapper header.header .logo {}
 
 .wrapper header.header .logo h2 {
@@ -285,6 +293,8 @@ section.blog-post-area h4 span.author-name {
 
 .wrapper footer.footer {
     height: 130px;
+    flex-grow: 0;
+
 }
 
 .wrapper footer .footer-bg {
@@ -748,4 +758,33 @@ section.blog-post-area h4 span.author-name {
     font-family: Geometria;
     font-size: 15px;
     font-weight: 500;
+}
+
+/*registration forms*/
+.register {
+    margin-top: 5%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+/*Tag creation form*/
+.tag_form{
+    display: flex;
+    padding: 10px;
+    width: 100%;
+    height: 400px;
+    align-items: center;
+    justify-content: center;
+}
+
+.post_form{
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.post_comment {
+    padding: 10px;
+    width: 80%;
+    height: 80%;
 }

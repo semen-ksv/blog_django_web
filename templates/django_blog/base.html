@@ -113,44 +113,44 @@
 </head>
 
 <body>
-    <div class="wrapper">
-        <header class="header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-2">
-                        <div class="logo">
-                            <h2><a href="#">Classic</a></h2>
-                        </div>
+<div class="wrapper">
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="logo">
+                        <h2><a href="#">Classic</a></h2>
                     </div>
-                    <div class="col-md-10">
-                        <div class="menu">
-                            <ul>
-                                <li class="active"><a href="{% url 'blog_home' %}">Home</a></li>
-                                <li><a href="#">Food</a></li>
+                </div>
+                <div class="col-md-10">
+                    <div class="menu">
+                        <ul>
+                            <li class="active"><a href="{% url 'blog_home' %}">Home</a></li>
+                            <li><a href="#">Food</a></li>
 
-                                <li><a href="#">photography</a></li>
+                            <li><a href="#">photography</a></li>
 
-                                {% if  user.is_authenticated %}
+                            {% if  user.is_authenticated %}
 
-                <li><a href="{% url 'post_create' %}">New post</a></li>
-                <li><a href="{% url 'logout' %}">logout</a></li>
-                <li><a href="{% url 'profile' %}">Hello: {{ user.username }}
-                    <img alt="" src="{{ user.profile.image.url }}" width="30px" height="30px">
-                </a></li>
-
-
-            {% else %}
-                <li><a href="{% url 'login' %}">login</a></li>
-
-            {% endif %}
+                                <li><a href="{% url 'post_create' %}">New post</a></li>
+                                <li><a href="{% url 'logout' %}">logout</a></li>
+                                <li><a href="{% url 'profile' %}">Hello: {{ user.username }}
+                                    <img alt="" src="{{ user.profile.image.url }}" width="30px" height="30px">
+                                </a></li>
 
 
-                            </ul>
-                        </div>
+                            {% else %}
+                                <li><a href="{% url 'login' %}">login</a></li>
+
+                            {% endif %}
+
+
+                        </ul>
                     </div>
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
 
 
 
@@ -163,50 +163,52 @@
     {% endif %}
 
     {% block image_section %}
-    
+
     {% endblock %}
 
-        {% block content %}
-            Some content
-        {% endblock %}
+    {% block content %}
+        Some content
+    {% endblock %}
 
 
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="footer-bg">
-                            <div class="row">
-                                <div class="col-md-9">
-                                    <div class="footer-menu">
-                                        <ul>
-                                            <li class="active"><a href="#">Home</a></li>
-                                            <li><a href="#">lifestyle</a></li>
-                                            <li><a href="#">Food</a></li>
-                                            <li><a href="#">Nature</a></li>
-                                            <li><a href="#">photography</a></li>
-                                        </ul>
-                                    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="footer-bg">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="footer-menu">
+                                    <ul>
+                                        <li class="active"><a href="#">Home</a></li>
+                                        <li><a href="#">lifestyle</a></li>
+                                        <li><a href="#">Food</a></li>
+                                        <li><a href="#">Nature</a></li>
+                                        <li><a href="#">photography</a></li>
+                                    </ul>
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="footer-icon">
-                                        <p><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></p>
-                                    </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="footer-icon">
+                                    <p><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                        <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
-    </div>
-    <script src="{%static 'js/jquery-3.1.1.min.js'%}"></script>
-    <script src="{%static 'js/bootstrap.min.js'%}"></script>
-    <script src="{%static 'js/owl.carousel.min.js'%}"></script>
-    <script src="{%static 'js/active.js'%}"></script>
+        </div>
+    </footer>
+</div>
+<script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/active.js' %}"></script>
 </body>
-
-
 
 
 {#<footer class="pageFooter special-color-dark" >#}
