@@ -1,5 +1,5 @@
 {% extends 'my_blog/blog_base.html' %}
-{%  load tags_sidbar %}
+{% load tags_sidbar %}
 {% block title %}
     {{ post.title }}
 {% endblock %}
@@ -7,43 +7,7 @@
 
 {% block content %}
 
-    {#    <div class="media-body">#}
-    {#        <div class="media-article">#}
-    {#            <h2>{{ post.title }}</h2>#}
-    {#            <div class="article-metadata" style="margin-top: 20px; margin-bottom: 20px;">#}
-    {#                <div class="article-head-img">#}
-    {#                    <img class="rounded-circle" src="{{ post.author.profile.image.url }}" width="50" height="50">#}
-    {#                </div>#}
-    {#                <a class="mr-2" href="{% url 'author_post' post.author.username %}">{{ post.author }}</a>#}
-    {#                <small class="text-muted">{{ post.date_posted }}</small>#}
-    {#            </div>#}
-    {##}
-    {#            <div class="article-content">#}
-    {#                {% if post.post_img %}#}
-    {#                    <img src="{{ post.post_img.url }}"#}
-    {#                         style="float:left; margin: 0 7px 7px 0; max-height:100%!important;">#}
-    {#                {% endif %}#}
-    {#                {{ post.body|safe }}#}
-    {#            </div>#}
-    {#            <div style="color: #f5efaf; float: right; font-size: 12px">post have {{ post.comment_count }}#}
-    {#                {% if post.comment_count < 1 %}#}
-    {#                    comment#}
-    {#                {% else %}#}
-    {#                    comments#}
-    {#                {% endif %}#}
-    {#            </div>#}
-    {#            <div style="clear:both;">#}
-    {#                {% for tag in post.tags.all %}#}
-    {#                    <a href="{% url 'tags_list' %}" class="badge badge-pill badge-dark">{{ tag }}</a>#}
-    {#                {% endfor %}#}
-    {#            </div>#}
-    {##}
-    {#        </div>#}
-    {#    </div>#}
-    {#    <br>#}
     <div class="wrapper">
-
-
         <section class="single-blog-area">
             <div class="container">
                 <div class="row">
@@ -55,11 +19,11 @@
                                         <h2>{{ post.title }}</h2>
                                         <span>Tag:
                                             {% for tag in post.tags.all %}
-                                                <a href="{{ tag.get_absolute_url }}" style="color: #0f74a8; font-size: 16px; text-decoration: none;">
-                                                    {{ tag }} </a>
+                                                <a href="{{ tag.get_absolute_url }}"
+                                                   style="color: #0f74a8; font-size: 16px; text-decoration: none;"> {{ tag.tag }} </a>
 
                                             {% endfor %}
-                                        </span>
+</span>
                                         <div class="single-content">
 
                                             {% if post.post_img %}
@@ -72,121 +36,110 @@
                                             <div class="for-style">
                                                 {{ post.body|safe }}
                                             </div>
-                                                                                    </div>
+                                        </div>
+                                    </div>
+
+                                    {% if user.is_authenticated and post.author == user or user.is_staff %}
+
+                                        <div style="padding: 0 10% 5% 10%; display: flex; justify-content: space-between; align-items: center;">
+                                            <a type="button" class="btn btn-outline-info"
+                                               href="{{ post.get_update_url }}">
+                                                Change post
+                                            </a>
+
+                                            <a type="submit" class="btn btn-outline-danger" style=""
+                                               href="{% url 'post_delete' slug=post.slug %}">
+                                                Delete post
+                                            </a>
                                         </div>
 
-                                        {% if user.is_authenticated and post.author == user or user.is_staff %}
+                                    {% endif %}
 
-                                            <div style="padding: 0 10% 0 10%; display: flex; justify-content: space-between; align-items: center;">
-                                                <a type="button" class="btn btn-outline-info"
-                                                   href="{{ post.get_update_url }}">
-                                                    Change post
-                                                </a>
+                                    <div class="post_comment">
+                                        <p><h4>Live your comment</h4></p>
+                                        <form action="{% url 'post_comment' post.id %}" method="post">
+                                            {% csrf_token %}
 
-                                                <a type="submit" class="btn btn-outline-danger" style=""
-                                                   href="{% url 'post_delete' slug=post.slug %}">
-                                                    Delete post
-                                                </a>
+                                            <div class="comment">
+                                                <input type="text" name="body" id="comment_text" placeholder="Write comment"
+                                                       class="comment" >
                                             </div>
 
-                                        {% endif %}
-
-                                        <div class="post_comment">
-                                            <p><h4>Live your comment</h4></p>
-                                            <form action="{% url 'post_comment' post.id %}" method="post">
-                                                {% csrf_token %}
-
-                                                <div class="comment">
-                                                    <input type="text" name="" id="" placeholder="Comment"
-                                                           class="comment">
-                                                </div>
-
-
-                                                <div class="post">
-                                                    {% if user.is_authenticated %}
-                                                        <input type="submit" value="Post">
-                                                    {% else %}
-                                                        <a href="{% url 'login' %}"><strong style="color: #70160c;"> Log
-                                                            In
-                                                            to live a comments</strong></a>
-                                                    {% endif %}
-                                                </div>
-
-
-                                            </form>
-                                        </div>
-
-                                        <div class="ads-area">
-                                            <img src="/static/img/ads.jpg" alt="">
-                                            <p>Your Ad Banner Goes Here</p>
-                                        </div>
-
-
-                                        <div class="commententries">
-                                            <h3>Comments</h3>
-                                            {% if post.get_comments %}
-
-
-
-                                                <ul class="commentlist">
-                                                    {% for comment in post.get_comments %}
-                                                        <li>
-                                                            <article class="comment">
-                                                                <header class="comment-author">
-                                                                    <img src="{{ comment.user.profile.image.url }}"
-                                                                         alt="">
-                                                                </header>
-                                                                <section class="comment-details">
-                                                                    <div class="author-name">
-                                                                        <h5><a href="#">{{ comment.user }}</a></h5>
-                                                                        <p>{{ comment.data_comment }}</p>
-                                                                    </div>
-                                                                    <div class="comment-body">
-                                                                        {{ comment.body }}
-                                                                    </div>
-                                                                    <div class="reply">
-                                                                        <p><span><a href="#"><i class="fa fa-thumbs-up"
-                                                                                                aria-hidden="true"></i></a>12</span><span><a
-                                                                                href="#"><i class="fa fa-reply"
-                                                                                            aria-hidden="true"></i></a>7</span>
-                                                                        </p>
-                                                                    </div>
-                                                                </section>
-                                                            </article>
-
-                                                        </li>
-                                                    {% endfor %}
-                                                </ul>
-                                            {% endif %}
-                                        </div>
-
+                                            <div class="post">
+                                                {% if user.is_authenticated %}
+                                                    <input type="submit" value="Post">
+                                                {% else %}
+                                                    <a href="{% url 'login' %}"><strong style="color: #70160c;">
+                                                        Log In to live a comments</strong></a>
+                                                {% endif %}
+                                            </div>
+                                        </form>
                                     </div>
+
+                                    <div class="ads-area">
+                                        <img src="/static/img/ads.jpg" alt="">
+                                        <p>Your Ad Banner Goes Here</p>
+                                    </div>
+
+                                    <div class="commententries">
+                                        <h3>Comments</h3>
+                                        {% if post.get_comments %}
+
+                                            <ul class="commentlist">
+                                                {% for comment in post.get_comments %}
+                                                    <li>
+                                                        <article class="comment">
+                                                            <header class="comment-author">
+                                                                <img src="{{ comment.user.profile.image.url }}"
+                                                                     alt="">
+                                                            </header>
+                                                            <section class="comment-details">
+                                                                <div class="author-name">
+                                                                    <h5><a href="#">{{ comment.user }}</a></h5>
+                                                                    <p>{{ comment.data_comment }}</p>
+                                                                </div>
+                                                                <div class="comment-body">
+                                                                    {{ comment.body }}
+                                                                </div>
+                                                                <div class="reply">
+                                                                    <p><span><a href="#"><i class="fa fa-thumbs-up"
+                                                                                            aria-hidden="true"></i></a>12</span><span><a
+                                                                            href="#"><i class="fa fa-reply"
+                                                                                        aria-hidden="true"></i></a>7</span>
+                                                                    </p>
+                                                                </div>
+                                                            </section>
+                                                        </article>
+
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </div>
+
                                 </div>
-                                <div class="col-md-4">
-                                    {% get_recent 5 %}
+                            </div>
+                            <div class="col-md-4">
+                                <div class="newsletter">
+                                    <h2 class="sidebar-title">Find all interesting</h2>
+                                    <form action="{% url 'search_home' %}">
+                                        {% csrf_token %}
+                                        <input name="search" id="search-engine" type="search"
+                                               placeholder="search hear...">
+                                        <input type="submit" value="Search">
+                                    </form>
+                                </div>
+                                {% get_recent 5 %}
                                 <div class="tags">
                                     {% get_all_tags %}
                                 </div>
 
-                                    <div class="newsletter">
-                                        <h2 class="sidebar-title">Find all interesting</h2>
-                                        <form action="{% url 'search_home' %}" >
-                                            {% csrf_token %}
-                                            <input name="search" id="search-engine" type="search" placeholder="search hear...">
-                                            <input type="submit" value="Search">
-                                        </form>
-                                    </div>
-                                    {#                <form >#}
-{#                  <input class="search-input" type="text" placeholder="Искать здесь...">#}
-{#                  <button class="search-button" type="submit"></button>#}
-{#                </form>#}
-{#                <form action="{% url 'search_home' %}">#}
 
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </section>
     </div>
 
