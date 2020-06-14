@@ -23,7 +23,7 @@ def search(request):
         posts = Post.objects.filter(Q(title__icontains=search_query) | Q(body__icontains=search_query))
     else:
         posts = Post.objects.all()
-    return render(request, 'my_blog/blog_post_list.html', context={'posts': posts})
+    return render(request, 'my_blog/search_post_list.html', context={'posts': posts})
 
 
 class PostsList(ListView):
