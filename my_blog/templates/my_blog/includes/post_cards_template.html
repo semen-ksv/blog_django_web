@@ -37,7 +37,7 @@
 <div class="col-md-3">
     <div class="single-post">
         {% if post.post_img %}
-            <img src="{{ post.post_img.url }}" alt="" style="float:left; margin: 0 7px 7px 0; max-height:100%!important;">
+            <img src="{{ post.post_img.url }}" alt="" style="float:left; margin: 0 7px 7px 0; height: 200px">
             {% else %}
             <img src="/media/Article.jpg" alt="" style="float:left; margin: 0 7px 7px 0; max-height:100%!important;">
         {% endif %}
@@ -47,7 +47,7 @@
         </h4>
         <p> {{ post.body|safe|truncatewords:50 }}</p>
         <h4><span>{{ post.date_posted|date:'d.m.Y' }}</span></h4>
-     <div style="color: #575205; float: right; font-size: 12px">post have {{ post.comment_count }}
+     <div style="color: #575205; float: right; font-size: 12px; font-family: Geometria;">post have {{ post.comment_count }}
             {% if post.comment_count < 1 %}
                 comment
             {% else %}

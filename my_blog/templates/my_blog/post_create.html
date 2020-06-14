@@ -8,42 +8,26 @@
 
 {% block content %}
     <div class="container mt-3">
-    <div class="row">
-<div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
 
-<div class="post_form" >
-    <p><h4><strong>Create post</strong></h4></p>
-    <form action="{% url 'post_create' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-
-{#        {% for field in form %}#}
-{#            <div class="form-group">#}
-{#                {% if field.errors %}#}
-{#                    <div class="alert alert-danger" role="alert">#}
-{#                        {{ field.errors }}#}
-{#                    </div>#}
-{#                {% endif %}#}
-{##}
-{#                {{ field.label }}#}
-{#                {% if field == 'body' %}#}
-{#                     {{ field.media }}#}
-{#                {% endif %}#}
-{#                    {{ field}}#}
-{##}
-{#            </div>#}
-{#        {% endfor %}#}
-
-        {{ form|crispy }}
-        {{ form.media }}
+                <div class="post_form">
+                    <p><h4><strong>Create post</strong></h4></p>
+                    <form action="{% url 'post_create' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
 
 
-        <button type="submit" class="btn btn-outline-info" style="">
-            Create Post
-        </button>
-    </form>
-</div>
-</div>
-    </div>
+                        {{ form|crispy }}
+                        {{ form.media }}
+
+
+                        <button type="submit" class="btn btn-outline-info" style="">
+                            Create Post
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
 

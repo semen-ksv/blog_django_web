@@ -29,6 +29,13 @@
                                         class="author">Posted By: <span
                                         class="author-name">{{ posts.first.author }}</span></span>
                                 </h4>
+                                     <div style="color: #575205; float: right; font-size: 12px; font-family: Geometria;">post have {{ posts.first.comment_count }}
+                                        {% if post.comment_count < 1 %}
+                                            comment
+                                        {% else %}
+                                            comments
+                                        {% endif %}
+                                    </div>
                             </div>
                         </div>
                     </div>
