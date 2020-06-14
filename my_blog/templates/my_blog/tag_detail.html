@@ -6,10 +6,52 @@
 
 
 {% block content %}
-    <div style="padding: 1%;"><h2 class="mb-3"> Post with "{{ tag.tag }}" tag:</h2></div>
+{#    <div style="padding: 1%;"><h2 class="mb-3"> Post with "{{ tag.tag }}" tag:</h2></div>#}
+{##}
+{#    {% for post in tag.posts.all %}#}
+{#        {%  include 'my_blog/includes/post_cards_template.html' %}#}
+{#    {% endfor %}#}
+    <section class="blog-post-area">
+        <div class="container">
+            <div class="row">
+                <div class="blog-post-area-style">
 
-    {% for post in tag.posts.all %}
-        {%  include 'my_blog/includes/post_cards_template.html' %}
-    {% endfor %}
+                    <h3>Posts for {{ tag.tag }} tag</h3>
+                    {% for post in tag.posts.all %}
+                        {% include 'my_blog/includes/post_cards_template.html' %}
 
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% if is_paginated %}
+            <div class="pegination">
+                <div class="nav-links">
+                    {% if page_obj.has_previous %}
+                        <a class="page-numbers" href="{{ request.path }}?page={{ page_obj.previous_page_number }}">
+                            << </a>
+                    {% else %}
+                        <span class="page-numbers"> << </span>
+                    {% endif %}
+
+                    {% for i in paginator.page_range %}
+                        {% if page_obj.number == i %}
+                            <span class="page-numbers current">{{ page_obj.number }}</span>
+                        {% elif i > page_obj.number|add:-3 and i < page_obj.number|add:3 %}
+                            <a class="page-numbers" href="{{ request.path }}?page={{ i }}">
+                                {{ i }}
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                        <a class="page-numbers" href="{{ request.path }}?page={{ page_obj.next_page_number }}"> >> </a>
+                    {% else %}
+                        <a class="page-numbers" style="background-color: rgba(1,1,1,0)" href=""> >> </a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+
+    </section>
 {% endblock %}

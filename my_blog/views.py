@@ -114,6 +114,8 @@ class TagDetail(ObjectDetailMixin, View):
     model = Tag
     template = 'my_blog/tag_detail.html'
     context_object_name = 'tags'
+    paginate_by = 7
+
 
 
 class TagCreate(LoginRequiredMixin, ObjectCreateMixin, View):
