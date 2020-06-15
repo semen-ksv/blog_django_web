@@ -102,7 +102,7 @@
 
 .wrapper section.bg-text-area .container {}
 
-.wrapper section.bg-text-area .bg-text h3 {
+.wrapper section.bg-text-area .bg-text h4 {
     color: #fff;
     font-family: Geometria;
     font-size: 50px;
@@ -294,20 +294,21 @@ section.blog-post-area h4 span.author-name {
 }
 
 .wrapper footer.footer {
-    height: 130px;
+    height: 100px;
     flex-grow: 0;
     margin-top: auto;
 
 }
 
 .wrapper footer .footer-bg {
-    background: #000 none repeat scroll 0 0;
-    height: 130px;
+    background: #393838 none repeat scroll 0 0;
+    height: 100px;
     overflow: hidden;
 }
 
 .wrapper footer.footer .footer-menu {
     margin: 0
+
 }
 
 .wrapper footer.footer .footer-menu ul {

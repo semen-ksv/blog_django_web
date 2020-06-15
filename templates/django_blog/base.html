@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
         {% block title %}
-        
+
         {% endblock %}
     </title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -29,16 +29,17 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="logo">
-                        <h2><a href="{% url 'blog_home' %}" style="font-family: 'Cooper Black'; color: #0E2231; text-decoration: none"> Blog</a></h2>
+                        <h2><a href="{% url 'blog_home' %}"
+                               style="font-family: 'Cooper Black'; color: #0E2231; text-decoration: none"> Blog</a></h2>
                     </div>
                 </div>
                 <div class="col-md-10">
                     <div class="menu">
                         <ul>
                             <li class="active"><a href="{% url 'blog_home' %}">Home</a></li>
-                            <li><a href="#">Food</a></li>
+{#                            <li><a href="#">Advice</a></li>#}
 
-                            <li><a href="#">photography</a></li>
+                            <li><a href="#">Photography</a></li>
 
                             {% if  user.is_authenticated %}
 
@@ -88,23 +89,30 @@
                     <div class="footer-bg">
                         <div class="row">
                             <div class="col-md-9">
-                                <div class="footer-menu">
-                                    <ul>
-                                        <li class="active"><a href="#">Home</a></li>
-                                        <li><a href="#">lifestyle</a></li>
-                                        <li><a href="#">Food</a></li>
-                                        <li><a href="#">Nature</a></li>
-                                          <li>
-                                              © 2019 Django project
-                                          </li>
-                                    </ul>
+
+                                <div class="row">
+                                    <div class="col-sm-3" style="color: #fdfcfc; text-align: center; padding: 10px">
+                                        <img src="/static/img/sem.jpg" alt="" style="height: 80px">
+                                    </div>
+                                    <div class="col-sm-3" style="color: #fdfcfc; text-align: center; padding: 10px">
+                                        <h4>About me:</h4>
+                                        <p>I am Sem and trying to be software developer</p>
+                                    </div>
+                                    <div class="col-sm-3" style="color: #fdfcfc; text-align: center; padding: 10px">
+                                        <h4>Contact:</h4>
+                                        <p>ksvsem@gmail.com</p>
+                                        <p></p>
+                                    </div>
                                 </div>
+
                             </div>
                             <div class="col-md-3">
                                 <!-- Social buttons -->
                                 <div class="footer-icon">
-                                    <p><a href="https://www.facebook.com/ksvsem"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                        <a href="https://github.com/semen-ksv"><i class="fa fa-github" aria-hidden="true"></i></a>
+                                    <p><a href="https://www.facebook.com/ksvsem"><i class="fa fa-facebook"
+                                                                                    aria-hidden="true"></i></a>
+                                        <a href="https://github.com/semen-ksv"><i class="fa fa-github"
+                                                                                  aria-hidden="true"></i></a>
                                         <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                                     </p>
                                 </div>
