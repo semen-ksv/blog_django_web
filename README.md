@@ -17,3 +17,5 @@ In this project implemented...
 11. Add form for comments
 12. All user can registers and login/logout
 13. Add profile page for users
+
+![](/static/img/creanshot.jpg)
