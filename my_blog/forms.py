@@ -2,17 +2,12 @@ from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django import forms
 from django.core.exceptions import ValidationError
 # использовать данные только с словаря clean_data
+from django.utils.safestring import mark_safe
+
 from .models import Tag, Post, Comment
 
 
 class TagForm(forms.ModelForm):
-    # class TagForm(forms.Form):
-    # tag = forms.CharField(max_length=50)
-    # slug = forms.SlugField(max_length=50)
-    #
-    # # giv butstrap views for form
-    # tag.widget.attrs.update({'class': 'form-control'})
-    # slug.widget.attrs.update({'class': 'form-control'})
 
     class Meta:
         model = Tag
@@ -34,11 +29,6 @@ class TagForm(forms.ModelForm):
             raise ValidationError(f'Slug {new_slug} is already exists!')
         return new_slug
 
-    # def save(self):
-    #     """create new slug with method clean_data"""
-    #     new_tag = Tag.objects.create(tag=self.cleaned_data['tag'], slug=self.cleaned_data['slug'])
-    #     return new_tag
-
 
 class PostForm(forms.ModelForm):
     post_img = forms.ImageField(label='Select a file', help_text='Jpg, jpeg only')
@@ -49,10 +39,6 @@ class PostForm(forms.ModelForm):
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
-            # 'slug': forms.TextInput(attrs={'class': 'form-control'}),
-
-            # 'author': forms.SelectMultiple(attrs={'class': 'form-control'}),
-
             'tags': forms.SelectMultiple(attrs={'class': 'form-control'}),
         }
 

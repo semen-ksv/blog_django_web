@@ -1,8 +1,6 @@
 from PIL import Image
-from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
-from django.http import request
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.shortcuts import reverse
@@ -42,8 +40,6 @@ class Post(models.Model):
         """generate and save new slug for new title"""
         if not self.id:
             self.slug = generate_slug(self.title)
-        # if not self.author:
-        #     self.author = User.username
         super().save(*args, **kwargs)
 
         img = Image.open(self.post_img.path)

@@ -1,39 +1,3 @@
-{#<div class="media-body">#}
-{#    <div class="media-article">#}
-{#        <div class="article-metadata">#}
-{#            <div class="article-head-img">#}
-{#                <img class="rounded-circle" src="{{ post.author.profile.image.url }}" width="50" height="50">#}
-{#            </div>#}
-{#            <div class="article-head">#}
-{#                <a class="mr-2" href="{% url 'author_post' post.author.username %}">{{ post.author }}</a>#}
-{#                <small class="text-muted">{{ post.date_posted }}</small>#}
-{#                <h2><a class="article-title" href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>#}
-{#            </div>#}
-{#        </div>#}
-        {#        <h2><a class="article-title" href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>#}
-{##}
-{#        <div class="article-content">#}
-{#            {% if post.post_img %}#}
-{#                <img src="{{ post.post_img.url }}" style="float:left; margin: 0 7px 7px 0; max-height:100%!important;">#}
-{#            {% endif %}#}
-{#            {{ post.body|safe|truncatewords:80 }}#}
-{#        </div>#}
-{#        <div style="color: #f5efaf; float: right; font-size: 12px">post have {{ post.comment_count }}#}
-{#            {% if post.comment_count < 1 %}#}
-{#                comment#}
-{#            {% else %}#}
-{#                comments#}
-{#            {% endif %}#}
-{#        </div>#}
-{#        <div style="clear:both;">#}
-{#            {% for tag in post.tags.all %}#}
-{#                <a href="{% url 'tags_list' %}" class="badge badge-pill badge-dark">{{ tag }}</a>#}
-{#            {% endfor %}#}
-{#        </div>#}
-{#    </div>#}
-{#</div>#}
-
-
 <div class="col-md-3">
     <div class="single-post">
         {% if post.post_img %}
@@ -43,9 +7,11 @@
         {% endif %}
 
         <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-        <h4><span>Posted By: <span class="author-name"><a href="{% url 'author_post' post.author.username %}">{{ post.author }}</a></span></span>
+        <h4><span>Posted By: <span class="author-name">
+            <a href="{% url 'author_post' post.author.username %}">{{ post.author }}</a>
+        </span></span>
         </h4>
-        <p> {{ post.body|safe|truncatewords:50 }}</p>
+        <p> {{ post.body|safe|truncatewords:45 }}</p>
         <h4><span>{{ post.date_posted|date:'d.m.Y' }}</span></h4>
      <div style="color: #575205; float: right; font-size: 12px; font-family: Geometria;">post have {{ post.comment_count }}
             {% if post.comment_count < 1 %}

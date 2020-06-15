@@ -52,11 +52,11 @@ class ObjectUpdateMixin:
 
     def post(self, request, slug):
         obj = self.model.objects.get(slug__iexact=slug)
-        bound_form = self.form(request.POST, instance=obj)
-
+        bound_form = self.form(request.POST, request.FILES, instance=obj)
+        print(bound_form.is_valid, request.POST, request.FILES)
         if bound_form.is_valid():
-            new_obj = bound_form.save()
-            return redirect(new_obj)
+            renew_obj = bound_form.save()
+            return redirect(renew_obj)
         return render(request, self.template, context={'form': bound_form, self.model.__name__.lower(): obj})
 
 
