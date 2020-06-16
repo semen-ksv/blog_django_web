@@ -6,16 +6,22 @@
 
 
 {% block content %}
+    <section class="blog-post-area">
+        <div class="container">
+            <div class="row">
+                <div class="blog-post-area-style">
+                    <div style="padding: 1%"><h2 class="mb-5">Tags what you can choose:</h2>
 
-    <div style="padding: 1%"><h2 class="mb-5">Tags:</h2>
-
-        <div style="padding-left: 20px">
-            {% for tag in tags %}
-            <p>
-                <a href="{{ tag.get_absolute_url }}" class="badge badge-pill badge-dark"><h5>{{ tag.tag }}</h5></a>
-            </p>
-            {% endfor %}
+                        <div style="padding-left: 20px">
+                            {% for tag in tags %}
+{#                            <p>#}
+                                <a href="{{ tag.get_absolute_url }}" class="badge badge-pill badge-dark"><h5>{{ tag.tag }}</h5></a>
+{#                            </p>#}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-
+    </section>
 {% endblock %}
