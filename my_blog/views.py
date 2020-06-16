@@ -10,7 +10,6 @@ from .utilities import ObjectDetailMixin, ObjectCreateMixin, ObjectUpdateMixin, 
 from .forms import TagForm, PostForm, CommentForm
 
 
-
 def search(request):
     # form to search for articles
     search_query = request.GET.get('search', '')
@@ -31,7 +30,6 @@ class PostsList(ListView):
     paginate_by = 8
 
 
-
 class AuthorPostsList(ListView):
     """Create page with post for one author"""
 
@@ -43,7 +41,6 @@ class AuthorPostsList(ListView):
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Post.objects.filter(author=user).order_by('-date_posted')
-
 
 
 class PostDetail(ObjectDetailMixin, View):
@@ -72,7 +69,6 @@ class PostUpdate(LoginRequiredMixin, ObjectUpdateMixin, View):
 
 
 class PostDelete(LoginRequiredMixin, ObjectDeleteMixin, View):
-
     raise_exception = True
     model = Post
     template = 'my_blog/post_delete.html'
@@ -86,7 +82,6 @@ class TagDetail(ObjectDetailMixin, View):
     template = 'my_blog/tag_detail.html'
     context_object_name = 'tags'
     paginate_by = 7
-
 
 
 class TagCreate(LoginRequiredMixin, ObjectCreateMixin, View):
@@ -107,7 +102,6 @@ class TagUpdate(LoginRequiredMixin, ObjectUpdateMixin, View):
 
 
 class TagDelete(LoginRequiredMixin, ObjectDeleteMixin, View):
-
     raise_exception = True
     model = Tag
     template = 'my_blog/tag_delete.html'
@@ -121,6 +115,7 @@ class TagsList(ListView):
     template_name = 'my_blog/tag_list.html'
     context_object_name = 'tags'
     ordering = ['tag']
+
 
 class AddComment(LoginRequiredMixin, View):
     """Add new comments for post"""
@@ -137,7 +132,9 @@ class AddComment(LoginRequiredMixin, View):
             form.save()
         return redirect(post.get_absolute_url())
 
+
 class AllPhotography(ListView):
+    """page show all photos"""
     model = Photography
     template_name = 'my_blog/photography.html'
     context_object_name = 'photos'

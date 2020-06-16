@@ -11,11 +11,15 @@ admin.site.register(Photography)
 
 class PostAdminForm(forms.ModelForm):
     body = forms.CharField(widget=CKEditorUploadingWidget())
+
     class Meta:
         model = Post
         fields = '__all__'
 
+
 class PostAdmin(admin.ModelAdmin):
+    """Specified admin panel for Posts"""
+
     form = PostAdminForm
     save_as = True
     save_on_top = True
@@ -24,13 +28,13 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ('title', 'body',)
     readonly_fields = ('date_posted', 'get_image')
     fields = ('title',
-                'slug',
-                'author',
-                'body',
-                'get_image',
-                'post_img',
-                'date_posted',
-                'tags',)
+              'slug',
+              'author',
+              'body',
+              'get_image',
+              'post_img',
+              'date_posted',
+              'tags',)
 
     def get_image(self, obj):
         if obj.post_img:
