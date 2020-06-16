@@ -39,7 +39,7 @@
                             <li class="active"><a href="{% url 'blog_home' %}">Home</a></li>
                             <li><a href="{%  url 'tags_list' %}">All Tags</a></li>
 
-                            <li><a href="#">Photography</a></li>
+                            <li><a href="{% url 'photography' %}">Photography</a></li>
 
                             {% if  user.is_authenticated %}
 

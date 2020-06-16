@@ -1,0 +1,31 @@
+{% extends 'my_blog/blog_base.html' %}
+
+{% block title %}
+   Photography
+{% endblock %}
+
+
+{% block content %}
+    <section class="blog-post-area">
+        <div class="container">
+            <div class="row">
+                <div class="blog-post-area-style">
+                    <h2>My best photography:</h2>
+                             {% for photo in photos %}
+                    <div class="col-md-3">
+
+
+                                <div class="gallery">
+
+                                    <img src="{{ photo.photo.url }}" alt="photo" width="400" height="300">
+
+                                  <div class="desc">Add a description of the image here</div>
+                                </div>
+                        </div>
+                                                {% endfor %}
+                </div>
+                </div>
+            </div>
+
+    </section>
+{% endblock %}

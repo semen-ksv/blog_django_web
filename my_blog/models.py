@@ -85,3 +85,10 @@ class Tag(models.Model):
     def get_absolute_url(self):
         """generate unique url path for tags"""
         return reverse('tag_detail', kwargs={'slug': self.slug})
+
+
+class Photography(models.Model):
+    photo = models.ImageField(null=True, blank=True, upload_to='photography/', verbose_name='photo')
+
+    def __str__(self):
+        return f"{self.photo.url}"

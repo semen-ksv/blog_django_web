@@ -2,10 +2,11 @@ from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 from django import forms
-from .models import Tag, Post, Comment
+from .models import Tag, Post, Comment, Photography
 
 admin.site.register(Tag)
 admin.site.register(Comment)
+admin.site.register(Photography)
 
 
 class PostAdminForm(forms.ModelForm):

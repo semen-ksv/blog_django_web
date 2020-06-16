@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.db.models import Q
 
-from .models import Post, Tag
+from .models import Post, Tag, Photography
 from .utilities import ObjectDetailMixin, ObjectCreateMixin, ObjectUpdateMixin, ObjectDeleteMixin
 from .forms import TagForm, PostForm, CommentForm
 
@@ -136,3 +136,8 @@ class AddComment(LoginRequiredMixin, View):
             form.user = request.user
             form.save()
         return redirect(post.get_absolute_url())
+
+class AllPhotography(ListView):
+    model = Photography
+    template_name = 'my_blog/photography.html'
+    context_object_name = 'photos'
