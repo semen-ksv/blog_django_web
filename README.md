@@ -18,7 +18,8 @@ In this project implemented...
 12. Add form for comments
 13. All user can registers and login/logout
 14. Add profile page for users
-15. In toolbar add info, image, and link to social media
+15. In toolbar add info, image, and link to social media\
+16. Add Photography panel with my favorite photos
 
 ![](/static/img/creanshot.jpg)
 ![](/static/img/screan2.jpg)
