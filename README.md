@@ -19,3 +19,4 @@ In this project implemented...
 13. Add profile page for users
 
 ![](/static/img/creanshot.jpg)
+![](/static/img/screan2.jpg)
