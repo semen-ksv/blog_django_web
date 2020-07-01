@@ -88,6 +88,7 @@ class Tag(models.Model):
 
 
 class Photography(models.Model):
+    """model for photo"""
     photo = models.ImageField(null=True, blank=True, upload_to='photography/', verbose_name='photo')
 
     def __str__(self):
