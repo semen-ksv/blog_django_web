@@ -5,7 +5,7 @@ decorator==4.4.1
 Django==3.0.7
 django-ckeditor==5.8.0
 django-crispy-forms==1.8.1
-django-debug-toolbar==2.1
+django-debug-toolbar==2.2.1
 django-js-asset==1.2.2
 django-tinymce==2.8.0
 jedi==0.15.1
